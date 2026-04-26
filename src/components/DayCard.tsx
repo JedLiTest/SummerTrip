@@ -56,32 +56,32 @@ export default function DayCard({ day, index }: DayCardProps) {
 
         <CardContent>
           <Tabs defaultValue="attractions">
-            <TabsList className={`w-full h-11 bg-gray-50 grid`} style={{ gridTemplateColumns: `repeat(${tabCount}, 1fr)` }}>
-              <TabsTrigger value="attractions" className="flex items-center gap-1.5 text-xs md:text-sm">
-                <MapPin className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">景点</span>
+            <TabsList className={`w-full h-12 bg-gradient-to-r from-gray-50 to-gray-100/80 grid rounded-xl border border-gray-200/50`} style={{ gridTemplateColumns: `repeat(${tabCount}, 1fr)` }}>
+              <TabsTrigger value="attractions" className="flex items-center gap-1.5 text-xs md:text-sm group">
+                <MapPin className="w-4 h-4 transition-transform group-hover:scale-110" />
+                <span className="text-xs font-medium">景点</span>
               </TabsTrigger>
               {hasTimeline && (
-                <TabsTrigger value="timeline" className="flex items-center gap-1.5 text-xs md:text-sm">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">行程</span>
+                <TabsTrigger value="timeline" className="flex items-center gap-1.5 text-xs md:text-sm group">
+                  <Clock className="w-4 h-4 transition-transform group-hover:scale-110" />
+                  <span className="text-xs font-medium">行程</span>
                 </TabsTrigger>
               )}
               {day.hotel && (
-                <TabsTrigger value="hotel" className="flex items-center gap-1.5 text-xs md:text-sm">
-                  <Bed className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">住宿</span>
+                <TabsTrigger value="hotel" className="flex items-center gap-1.5 text-xs md:text-sm group">
+                  <Bed className="w-4 h-4 transition-transform group-hover:scale-110" />
+                  <span className="text-xs font-medium">住宿</span>
                 </TabsTrigger>
               )}
               {day.restaurants && day.restaurants.length > 0 && (
-                <TabsTrigger value="food" className="flex items-center gap-1.5 text-xs md:text-sm">
-                  <UtensilsCrossed className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">美食</span>
+                <TabsTrigger value="food" className="flex items-center gap-1.5 text-xs md:text-sm group">
+                  <UtensilsCrossed className="w-4 h-4 transition-transform group-hover:scale-110" />
+                  <span className="text-xs font-medium">美食</span>
                 </TabsTrigger>
               )}
-              <TabsTrigger value="transport" className="flex items-center gap-1.5 text-xs md:text-sm">
-                <TrainFront className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">交通</span>
+              <TabsTrigger value="transport" className="flex items-center gap-1.5 text-xs md:text-sm group">
+                <TrainFront className="w-4 h-4 transition-transform group-hover:scale-110" />
+                <span className="text-xs font-medium">交通</span>
               </TabsTrigger>
             </TabsList>
 
