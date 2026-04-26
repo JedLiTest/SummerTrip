@@ -1,0 +1,316 @@
+export interface BookingItem {
+  id: string
+  day: number
+  date: string           // 游览日期，如 '6月13日'
+  attractionName: string // 景点名称
+  attractionNameEn: string
+  type: 'ticket' | 'reservation' | 'rental' | 'pass'  // 购票 / 预约 / 租车 / 通票
+  urgency: 'critical' | 'recommended' | 'optional'     // 必须 / 建议 / 可选
+  status: 'pending' | 'booked' | 'not_needed'           // 待办 / 已订 / 无需
+  price: string          // 价格信息
+  bookingUrl?: string    // 购票链接
+  bookingTip: string     // 购票建议
+  advanceDays: number    // 建议提前天数
+  deadlineNote?: string  // 截止提醒
+  cityId: string
+}
+
+export const bookingItems: BookingItem[] = [
+  // === Day 1: 航班 ===
+  {
+    id: 'flight-hk-paris',
+    day: 1,
+    date: '6月12日',
+    attractionName: '法航 AF185 香港→巴黎',
+    attractionNameEn: 'Air France AF185',
+    type: 'ticket',
+    urgency: 'critical',
+    status: 'booked',
+    price: '¥8,000-15,000/人',
+    bookingUrl: 'https://www.airfrance.com.cn',
+    bookingTip: '已购票，记得提前在线值机（起飞前30小时开放）',
+    advanceDays: 90,
+    cityId: 'paris'
+  },
+
+  // === Day 2: 巴黎景点 ===
+  {
+    id: 'louvre',
+    day: 2,
+    date: '6月13日',
+    attractionName: '卢浮宫',
+    attractionNameEn: 'Louvre Museum',
+    type: 'reservation',
+    urgency: 'critical',
+    status: 'pending',
+    price: '€22/人（18岁以下免费）',
+    bookingUrl: 'https://www.louvre.fr/en/visit/tickets',
+    bookingTip: '必须提前预约时段！旺季名额紧张，建议早上9:00场次入场避开人流',
+    advanceDays: 30,
+    deadlineNote: '6月旺季，建议至少提前2-4周预约',
+    cityId: 'paris'
+  },
+  {
+    id: 'eiffel-tower',
+    day: 2,
+    date: '6月13日',
+    attractionName: '埃菲尔铁塔',
+    attractionNameEn: 'Eiffel Tower',
+    type: 'ticket',
+    urgency: 'recommended',
+    status: 'pending',
+    price: '€29.4/人（电梯到顶）',
+    bookingUrl: 'https://www.toureiffel.paris/en',
+    bookingTip: '强烈建议网上购票，现场排队1-2小时。如只在外围拍照可不购票',
+    advanceDays: 60,
+    deadlineNote: '最早提前60天开售，开售即抢',
+    cityId: 'paris'
+  },
+
+  // === Day 3: 奥赛博物馆 ===
+  {
+    id: 'orsay',
+    day: 3,
+    date: '6月14日',
+    attractionName: '奥赛博物馆',
+    attractionNameEn: 'Musée d\'Orsay',
+    type: 'ticket',
+    urgency: 'recommended',
+    status: 'pending',
+    price: '€16/人（18岁以下免费）',
+    bookingUrl: 'https://www.musee-orsay.fr/en/visit/tickets',
+    bookingTip: '建议提前购票选择时段，避开周末高峰。周四延长至21:45',
+    advanceDays: 14,
+    cityId: 'paris'
+  },
+
+  // === Day 4: 凡尔赛宫 ===
+  {
+    id: 'versailles',
+    day: 4,
+    date: '6月15日',
+    attractionName: '凡尔赛宫',
+    attractionNameEn: 'Palace of Versailles',
+    type: 'reservation',
+    urgency: 'critical',
+    status: 'pending',
+    price: '€21/人（18岁以下免费）',
+    bookingUrl: 'https://www.chateauversailles.fr/en/plan-your-visit/tickets-and-prices',
+    bookingTip: '必须预约入场时段！建议选9:00首批入场，直奔镜厅避开人流',
+    advanceDays: 30,
+    deadlineNote: '旺季名额极其紧张，越早越好',
+    cityId: 'paris'
+  },
+
+  // === Day 5: 吉维尼+橘园+游船 ===
+  {
+    id: 'monet-garden',
+    day: 5,
+    date: '6月16日',
+    attractionName: '莫奈花园（吉维尼）',
+    attractionNameEn: 'Giverny - Monet\'s Garden',
+    type: 'ticket',
+    urgency: 'recommended',
+    status: 'pending',
+    price: '€11/人',
+    bookingUrl: 'https://fondation-monet.com/en/informations-pratiques/',
+    bookingTip: '建议网上购票。火车+接驳巴士套票从Saint-Lazare出发',
+    advanceDays: 14,
+    cityId: 'paris'
+  },
+  {
+    id: 'orangerie',
+    day: 5,
+    date: '6月16日',
+    attractionName: '橘园美术馆',
+    attractionNameEn: 'Musée de l\'Orangerie',
+    type: 'ticket',
+    urgency: 'optional',
+    status: 'pending',
+    price: '€12.5/人（18岁以下免费）',
+    bookingUrl: 'https://www.musee-orangerie.fr/en/visit/tickets',
+    bookingTip: '可现场购票，人流不多。与奥赛联票€20更划算',
+    advanceDays: 7,
+    cityId: 'paris'
+  },
+  {
+    id: 'seine-cruise',
+    day: 5,
+    date: '6月16日',
+    attractionName: '塞纳河游船',
+    attractionNameEn: 'Seine River Cruise',
+    type: 'ticket',
+    urgency: 'optional',
+    status: 'pending',
+    price: '€16/人',
+    bookingUrl: 'https://www.bateaux-mouches.fr/en',
+    bookingTip: '可提前或现场购票，傍晚班次最佳',
+    advanceDays: 3,
+    cityId: 'paris'
+  },
+
+  // === Day 6: 租车 ===
+  {
+    id: 'car-rental',
+    day: 6,
+    date: '6月17日',
+    attractionName: '巴黎取车（租车）',
+    attractionNameEn: 'Car Rental Paris',
+    type: 'rental',
+    urgency: 'critical',
+    status: 'pending',
+    price: '€60-80/天',
+    bookingUrl: 'https://www.rentalcars.com',
+    bookingTip: '建议通过 Rentalcars 比价，选自动挡+全险。取车点选择市中心或火车站',
+    advanceDays: 30,
+    deadlineNote: '旺季租车价格飙升，尽早预订',
+    cityId: 'dijon'
+  },
+
+  // === Day 7: 瑞士高速通票 ===
+  {
+    id: 'swiss-vignette',
+    day: 7,
+    date: '6月18日',
+    attractionName: '瑞士高速公路通票',
+    attractionNameEn: 'Swiss Motorway Vignette',
+    type: 'pass',
+    urgency: 'critical',
+    status: 'pending',
+    price: 'CHF 40',
+    bookingTip: '可在瑞士边境加油站现场购买，或提前在网上购买电子版',
+    advanceDays: 7,
+    cityId: 'lucerne'
+  },
+
+  // === Swiss Travel Pass ===
+  {
+    id: 'swiss-travel-pass',
+    day: 8,
+    date: '6月19日',
+    attractionName: 'Swiss Travel Pass（瑞士通票）',
+    attractionNameEn: 'Swiss Travel Pass',
+    type: 'pass',
+    urgency: 'recommended',
+    status: 'pending',
+    price: 'CHF 281/人（连续4天）',
+    bookingUrl: 'https://www.sbb.ch/en/leisure-holidays/travel-in-switzerland/swiss-travel-pass.html',
+    bookingTip: '覆盖6/19-6/23，包含少女峰等火车半价。提前在SBB官网或飞猪购买',
+    advanceDays: 14,
+    deadlineNote: '越早买越安心，出发前激活',
+    cityId: 'interlaken'
+  },
+
+  // === Day 9: 少女峰 ===
+  {
+    id: 'jungfraujoch',
+    day: 9,
+    date: '6月20日',
+    attractionName: '少女峰齿轨火车',
+    attractionNameEn: 'Jungfraujoch Railway',
+    type: 'ticket',
+    urgency: 'critical',
+    status: 'pending',
+    price: 'CHF 220/人（Swiss Pass半价CHF 110）',
+    bookingUrl: 'https://www.jungfrau.ch/en-gb/jungfraujoch-top-of-europe/',
+    bookingTip: '必须提前官网购票选时段！建议选早上首班6:35从因特拉肯东站出发，避开人流',
+    advanceDays: 14,
+    deadlineNote: '旺季名额有限，至少提前2周',
+    cityId: 'interlaken'
+  },
+
+  // === Day 10: First + 瀑布 ===
+  {
+    id: 'first-grindelwald',
+    day: 10,
+    date: '6月21日',
+    attractionName: 'First菲尔斯特缆车+滑索',
+    attractionNameEn: 'First Grindelwald',
+    type: 'ticket',
+    urgency: 'recommended',
+    status: 'pending',
+    price: 'CHF 66/人（缆车往返）+ 滑索另购',
+    bookingUrl: 'https://www.jungfrau.ch/en-gb/grindelwaldfirst/',
+    bookingTip: '建议提前购买含 First Flyer 滑索的套票，现场可能售罄',
+    advanceDays: 7,
+    cityId: 'interlaken'
+  },
+  {
+    id: 'trummelbach',
+    day: 10,
+    date: '6月21日',
+    attractionName: '特吕默尔巴赫瀑布',
+    attractionNameEn: 'Trümmelbach Falls',
+    type: 'ticket',
+    urgency: 'optional',
+    status: 'pending',
+    price: 'CHF 12/人',
+    bookingTip: '可现场购票，无需预约',
+    advanceDays: 0,
+    cityId: 'interlaken'
+  },
+
+  // === Day 12: 采尔马特观景台 ===
+  {
+    id: 'gornergrat',
+    day: 12,
+    date: '6月23日',
+    attractionName: '戈尔内格拉特齿轨火车',
+    attractionNameEn: 'Gornergrat Railway',
+    type: 'ticket',
+    urgency: 'recommended',
+    status: 'pending',
+    price: 'CHF 95/人（Swiss Pass半价）',
+    bookingUrl: 'https://www.gornergrat.ch/en',
+    bookingTip: '建议提前购票，Swiss Travel Pass享50%折扣',
+    advanceDays: 7,
+    cityId: 'zermatt'
+  },
+  {
+    id: 'glacier-paradise',
+    day: 12,
+    date: '6月23日',
+    attractionName: '马特洪峰冰川天堂缆车',
+    attractionNameEn: 'Matterhorn Glacier Paradise',
+    type: 'ticket',
+    urgency: 'recommended',
+    status: 'pending',
+    price: 'CHF 105/人（Swiss Pass半价）',
+    bookingUrl: 'https://www.matterhornparadise.ch/en',
+    bookingTip: '下午前往最佳。Swiss Travel Pass享50%折扣',
+    advanceDays: 7,
+    cityId: 'zermatt'
+  },
+
+  // === Day 15: 返程航班 ===
+  {
+    id: 'flight-paris-hk',
+    day: 15,
+    date: '6月26日',
+    attractionName: '法航 AF186 巴黎→香港',
+    attractionNameEn: 'Air France AF186',
+    type: 'ticket',
+    urgency: 'critical',
+    status: 'booked',
+    price: '已购票',
+    bookingUrl: 'https://www.airfrance.com.cn',
+    bookingTip: '已购票，记得提前在线值机。机场还车后预留3.5小时办理登机',
+    advanceDays: 90,
+    cityId: 'beaune'
+  }
+]
+
+// 获取指定周（以行程天数为基准）内需要预约的项目
+export function getBookingsForWeek(startDay: number, endDay: number): BookingItem[] {
+  return bookingItems.filter(item => item.day >= startDay && item.day <= endDay)
+}
+
+// 获取待办预约项
+export function getPendingBookings(): BookingItem[] {
+  return bookingItems.filter(item => item.status === 'pending')
+}
+
+// 获取紧急预约项（critical + recommended）
+export function getUrgentBookings(): BookingItem[] {
+  return bookingItems.filter(item => item.status === 'pending' && (item.urgency === 'critical' || item.urgency === 'recommended'))
+}
