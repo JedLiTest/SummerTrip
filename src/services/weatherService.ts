@@ -9,7 +9,7 @@ export interface WeatherData {
   precipitation: number     // 降水量 mm
   uvIndex: number           // 紫外线指数
   date: string              // 日期 YYYY-MM-DD
-  isActualForecast: boolean // true: 行程当天预报; false: 14天后预报
+  isActualForecast: boolean // true: 行程当天预报; false: 去年同期历史参考
   forecastDate: string      // 实际查询的日期
 }
 
@@ -50,16 +50,16 @@ export function getWeatherInfo(code: number): { description: string; icon: strin
 
 /**
  * 计算实际要查询的天气日期
- * - 行程日期 - 今日 <= 14天: 查询行程当天天气
- * - 行程日期 - 今日 > 14天: 查询今日后第14天的天气
+ * - 行程日期 - 今日 <= 14天: 查询行程当天实际预报
+ * - 行程日期 - 今日 > 14天: 使用去年同期历史天气作为参考
  */
-function getQueryDate(tripDateStr: string): { queryDate: string; isActualForecast: boolean } {
+function getQueryDate(tripDateStr: string): { queryDate: string; isActualForecast: boolean; useHistorical: boolean } {
   // 解析行程日期 (格式: "6月12日")
   const match = tripDateStr.match(/(\d+)月(\d+)日/)
   if (!match) {
     const today = new Date()
     const fallback = new Date(today.getTime() + 14 * 86400000)
-    return { queryDate: formatDate(fallback), isActualForecast: false }
+    return { queryDate: formatDate(fallback), isActualForecast: false, useHistorical: false }
   }
 
   const month = parseInt(match[1])
@@ -72,10 +72,11 @@ function getQueryDate(tripDateStr: string): { queryDate: string; isActualForecas
   const diffDays = Math.floor((tripDate.getTime() - today.getTime()) / 86400000)
 
   if (diffDays <= 14) {
-    return { queryDate: formatDate(tripDate), isActualForecast: true }
+    return { queryDate: formatDate(tripDate), isActualForecast: true, useHistorical: false }
   } else {
-    const fallbackDate = new Date(today.getTime() + 14 * 86400000)
-    return { queryDate: formatDate(fallbackDate), isActualForecast: false }
+    // 使用去年同期的日期作为历史参考
+    const lastYearDate = new Date(year - 1, month - 1, day)
+    return { queryDate: formatDate(lastYearDate), isActualForecast: false, useHistorical: true }
   }
 }
 
@@ -97,7 +98,7 @@ export async function fetchWeather(cityId: string, tripDateStr: string): Promise
   const city = cities.find(c => c.id === cityId)
   if (!city) return null
 
-  const { queryDate, isActualForecast } = getQueryDate(tripDateStr)
+  const { queryDate, isActualForecast, useHistorical } = getQueryDate(tripDateStr)
   const cacheKey = `${cityId}_${queryDate}`
 
   // 检查缓存
@@ -106,7 +107,15 @@ export async function fetchWeather(cityId: string, tripDateStr: string): Promise
   }
 
   try {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max,uv_index_max&hourly=relative_humidity_2m&start_date=${queryDate}&end_date=${queryDate}&timezone=auto`
+    let url: string
+
+    if (useHistorical) {
+      // 使用 Open-Meteo 历史天气 API（archive）
+      url = `https://archive-api.open-meteo.com/v1/archive?latitude=${city.lat}&longitude=${city.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&hourly=relative_humidity_2m&start_date=${queryDate}&end_date=${queryDate}&timezone=auto`
+    } else {
+      // 使用预报 API
+      url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max,uv_index_max&hourly=relative_humidity_2m&start_date=${queryDate}&end_date=${queryDate}&timezone=auto`
+    }
 
     const res = await fetch(url)
     if (!res.ok) throw new Error(`Weather API error: ${res.status}`)
@@ -130,7 +139,7 @@ export async function fetchWeather(cityId: string, tripDateStr: string): Promise
       windSpeed: daily.wind_speed_10m_max[0],
       humidity,
       precipitation: daily.precipitation_sum[0] ?? 0,
-      uvIndex: daily.uv_index_max[0] ?? 0,
+      uvIndex: useHistorical ? 6 : (daily.uv_index_max?.[0] ?? 0), // 历史API不含UV，用默认值
       date: daily.time[0],
       isActualForecast,
       forecastDate: queryDate,

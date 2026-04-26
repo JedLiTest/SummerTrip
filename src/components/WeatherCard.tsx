@@ -60,11 +60,12 @@ export default function WeatherCard({ cityId, tripDate }: WeatherCardProps) {
     if (weather.isActualForecast) {
       return `${tripDate}天气预报`
     }
-    // 显示实际查询的日期
+    // 显示去年同期参考天气
     const d = new Date(weather.forecastDate)
     const m = d.getMonth() + 1
     const day = d.getDate()
-    return `参考天气（${m}月${day}日同地区预报）`
+    const y = d.getFullYear()
+    return `参考天气（${y}年${m}月${day}日同期历史）`
   }
 
   return (

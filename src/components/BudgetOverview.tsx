@@ -34,7 +34,7 @@ export default function BudgetOverview() {
           {/* Header */}
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-white mb-3">预算概览</h2>
-            <p className="text-gray-400">4人家庭14天法国瑞士旅行预估费用</p>
+            <p className="text-gray-400">4人家庭15天法国瑞士旅行预估费用</p>
           </div>
 
           {/* Currency Switcher */}
