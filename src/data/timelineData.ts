@@ -63,11 +63,11 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       time: '07:30',
       endTime: '09:00',
       title: '公寓check-in & 早餐',
-      description: '入住Modern Duplex公寓（市中心复式5房，巴黎2区）。入住时间16:00起，先寄存行李。在附近面包店Du Pain et des Idées享用法式早餐。',
+      description: '入住Sweett - Atelier Ponthieu公寓（香榭丽舍大街旁，巴黎8区）。入住时间16:00起，先寄存行李。在附近面包店享用法式早餐。',
       type: 'hotel',
       icon: '🏨',
       duration: '1.5小时',
-      location: '18 Rue Notre Dame de Recouvrance, 75002 Paris'
+      location: '52 Rue de Ponthieu, 75008 Paris'
     },
     {
       time: '09:00',
@@ -165,7 +165,7 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       description: '长途飞行后的第一天，注意时差调整，早点休息。',
       type: 'rest',
       icon: '😴',
-      location: 'Modern Duplex, 巴黎2区'
+      location: 'Sweett - Atelier Ponthieu, 巴黎8区'
     }
   ],
 
@@ -179,7 +179,7 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       type: 'meal',
       icon: '🥐',
       duration: '1小时',
-      location: '公寓附近, 巴黎2区'
+      location: '公寓附近, 巴黎8区'
     },
     {
       time: '09:00',
@@ -296,7 +296,7 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       type: 'meal',
       icon: '🥐',
       duration: '30分钟',
-      location: '公寓附近, 巴黎2区'
+      location: '公寓附近, 巴黎8区'
     },
     {
       time: '08:00',
@@ -385,7 +385,7 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       type: 'meal',
       icon: '🥐',
       duration: '30分钟',
-      location: '公寓附近, 巴黎2区'
+      location: '公寓附近, 巴黎8区'
     },
     {
       time: '08:15',
@@ -485,7 +485,7 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       type: 'hotel',
       icon: '🧳',
       duration: '1小时',
-      location: 'Modern Duplex, 巴黎2区'
+      location: 'Sweett - Atelier Ponthieu, 巴黎8区'
     },
     {
       time: '08:30',
