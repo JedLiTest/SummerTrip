@@ -89,6 +89,13 @@ export default function RestaurantItem({ restaurant }: RestaurantItemProps) {
             <span>适合儿童就餐</span>
           </div>
         )}
+
+        {restaurant.dressCode && (
+          <div className="flex items-start gap-1.5 text-xs text-purple-600 mt-2 p-2 rounded-lg bg-purple-50 border border-purple-100">
+            <span className="shrink-0 mt-0.5">👔</span>
+            <span>{restaurant.dressCode.replace(/^👔\s*|👗\s*/g, '')}</span>
+          </div>
+        )}
       </div>
     )
   }
@@ -253,6 +260,19 @@ export default function RestaurantItem({ restaurant }: RestaurantItemProps) {
                 </button>
               )}
             </div>
+
+            {/* Dress Code */}
+            {restaurant.dressCode && (
+              <div className="mt-3 p-3 rounded-lg bg-purple-50 border border-purple-200">
+                <div className="flex items-start gap-2">
+                  <span className="text-lg shrink-0">👔</span>
+                  <div>
+                    <div className="font-semibold text-sm text-purple-700 mb-0.5">着装要求</div>
+                    <p className="text-xs text-purple-600">{restaurant.dressCode.replace(/^👔\s*|👗\s*/g, '')}</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

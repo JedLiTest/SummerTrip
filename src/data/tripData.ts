@@ -68,15 +68,15 @@ export const tripData: DayPlan[] = [
       }
     ],
     hotel: {
-      name: 'Le Méridien Etoile',
-      stars: 5,
-      priceRange: '€300-600',
-      address: '巴黎凯旋门区，81 Boulevard Gouvion-Saint-Cyr',
-      addressEn: '81 Boulevard Gouvion-Saint-Cyr, 75017 Paris, France',
+      name: 'Sweett - Atelier Ponthieu',
+      stars: 4,
+      priceRange: '€250-400',
+      address: '巴黎8区，香榭丽舍大街旁，蓬蒂厄街52号',
+      addressEn: '52 Rue de Ponthieu, 75008 Paris, France',
       familyRoom: true,
-      features: ['凯旋门步行10分钟', '地铁直达', '现代商务酒店'],
-      lat: 48.8796,
-      lng: 2.2860
+      features: ['香榭丽舍核心地段', '整套公寓', '4位成人4晚', 'Booking.com Genius', '入住16:00-00:00', '退房11:00前', '步行可达凯旋门和香榭丽舍'],
+      lat: 48.8722,
+      lng: 2.3078
     },
     restaurants: [
       {
@@ -91,7 +91,8 @@ export const tripData: DayPlan[] = [
         cuisine: '现代法餐',
         priceLevel: 3,
         specialties: ['时令料理', '创意法餐'],
-        kidFriendly: false
+        kidFriendly: false,
+        dressCode: '👔 Smart Casual — 氛围轻松的米其林小馆，避免运动鞋和短裤即可'
       }
     ],
     transport: [
@@ -134,15 +135,15 @@ export const tripData: DayPlan[] = [
       }
     ],
     hotel: {
-      name: 'Le Méridien Etoile',
-      stars: 5,
-      priceRange: '€300-600',
-      address: '巴黎凯旋门区，81 Boulevard Gouvion-Saint-Cyr',
-      addressEn: '81 Boulevard Gouvion-Saint-Cyr, 75017 Paris, France',
+      name: 'Sweett - Atelier Ponthieu',
+      stars: 4,
+      priceRange: '€250-400',
+      address: '巴黎8区，香榭丽舍大街旁，蓬蒂厄街52号',
+      addressEn: '52 Rue de Ponthieu, 75008 Paris, France',
       familyRoom: true,
-      features: ['凯旋门步行10分钟', '地铁直达', '现代商务酒店'],
-      lat: 48.8796,
-      lng: 2.2860
+      features: ['香榭丽舍核心地段', '整套公寓', 'Booking.com Genius', '连住第2晚'],
+      lat: 48.8722,
+      lng: 2.3078
     },
     restaurants: [
       {
@@ -163,6 +164,26 @@ export const tripData: DayPlan[] = [
           confirmed: true,
           notes: '距奥赛博物馆步行15分钟，距巴黎圣母院步行10分钟'
         }
+      },
+      {
+        name: "L'Oiseau Blanc",
+        cuisine: '米其林星级法餐',
+        priceLevel: 4,
+        specialties: ['法式精致料理', '屋顶露台', '铁塔景观'],
+        kidFriendly: false,
+        dressCode: '👗 Chic & Elegant — 半岛酒店五星级屋顶餐厅，需着正式优雅服装。男士：衬衫+西裤+皮鞋；女士：优雅连衣裙。避免运动鞋、短裤、拖鞋、T恤',
+        address: '巴黎16区，克莱贝尔大街19号（半岛酒店顶层）',
+        addressEn: '19 Avenue Kléber, 75116 Paris, France',
+        lat: 48.8711,
+        lng: 2.2935,
+        reservation: {
+          date: '2026年6月14日（星期日）',
+          time: '19:45',
+          guests: 4,
+          platform: 'Direct',
+          confirmed: true,
+          notes: '半岛酒店屋顶餐厅，可观埃菲尔铁塔全景'
+        }
       }
     ],
     transport: [
@@ -176,62 +197,12 @@ export const tripData: DayPlan[] = [
     ]
   },
 
-  // Day 4: 凡尔赛宫
+  // Day 4: 吉维尼·莫奈花园 + 橘园美术馆（原Day 5景点，因凡尔赛周一闭馆而互换）
   {
     day: 4,
     date: '6月15日',
     cityId: 'paris',
-    title: '凡尔赛宫一日游',
-    summary: '路易十四的极致奢华宫殿，镜厅、法式园林，体验法国古典艺术巅峰。',
-    attractions: [
-      {
-        name: '凡尔赛宫',
-        nameEn: 'Palace of Versailles',
-        description: '路易十四建造的极致奢华宫殿，镜厅是法国古典艺术的巅峰。',
-        imageUrl: '/generated-images/Palace_of_Versailles_France__g_2026-04-21T13-16-14.png',
-        duration: '4小时',
-        familyFriendly: true,
-        tags: ['宫殿', '花园', '世界遗产']
-      }
-    ],
-    hotel: {
-      name: 'Le Méridien Etoile',
-      stars: 5,
-      priceRange: '€300-600',
-      address: '巴黎凯旋门区，81 Boulevard Gouvion-Saint-Cyr',
-      addressEn: '81 Boulevard Gouvion-Saint-Cyr, 75017 Paris, France',
-      familyRoom: true,
-      features: ['凯旋门步行10分钟', '地铁直达', '现代商务酒店'],
-      lat: 48.8796,
-      lng: 2.2860
-    },
-    restaurants: [
-      {
-        name: 'Angelina',
-        cuisine: '甜品店',
-        priceLevel: 2,
-        specialties: ['热巧克力', '蒙布朗'],
-        kidFriendly: true
-      }
-    ],
-    transport: [
-      {
-        type: 'train',
-        from: '巴黎',
-        to: '凡尔赛',
-        duration: '40分钟',
-        cost: '€7.1',
-        bookingTip: 'RER C线直达'
-      }
-    ]
-  },
-
-  // Day 5: 巴黎·吉维尼一日游
-  {
-    day: 5,
-    date: '6月16日',
-    cityId: 'paris',
-    title: '吉维尼·莫奈花园',
+    title: '吉维尼·莫奈花园 + 橘园',
     summary: '上午前往吉维尼参观莫奈故居和花园，《睡莲》创作地。下午返回巴黎，橘园美术馆欣赏大型睡莲，圣日耳曼区漫步&甜品。',
     attractions: [
       {
@@ -246,7 +217,7 @@ export const tripData: DayPlan[] = [
       {
         name: '橘园美术馆',
         nameEn: 'Musée de l\'Orangerie',
-        description: '杜乐丽花园内，专门收藏莫奈大型睡莲系列。两个椭圆形展厅，360度环绕式欣赏莫奈晚年巨作。',
+        description: '杜乐丽花园内，专门收藏莫奈大型睡莲系列。两个椭圆形展厅，360度环绕式欣赏莫奈晚年巨作。（每周二闭馆，周一正常开放）',
         imageUrl: '/generated-images/Mus_e_de_l_Orangerie_in_Paris__2026-04-21T12-36-58.png',
         duration: '1.5小时',
         familyFriendly: true,
@@ -255,7 +226,7 @@ export const tripData: DayPlan[] = [
       {
         name: '圣日耳曼区漫步 & 甜品',
         nameEn: 'Saint-Germain-des-Prés Walk & Pâtisserie',
-        description: '巴黎最文艺的街区！逛Shakespeare and Company传奇书店、Pierre Hermé品尝顶级马卡龙、Café de Flore门口打卡。沿Rue de Seine逛画廊和vintage小店，孩子可以挑选纪念品。距晚餐Marsan餐厅步行仅5分钟。',
+        description: '巴黎最文艺的街区！逛Shakespeare and Company传奇书店、Pierre Hermé品尝顶级马卡龙、Café de Flore门口打卡。沿Rue de Seine逛画廊和vintage小店，孩子可以挑选纪念品。',
         imageUrl: '/generated-images/A_realistic_photograph_of_Sain_2026-04-26T08-55-45.png',
         duration: '1小时45分',
         familyFriendly: true,
@@ -263,15 +234,65 @@ export const tripData: DayPlan[] = [
       }
     ],
     hotel: {
-      name: 'Le Méridien Etoile',
-      stars: 5,
-      priceRange: '€300-600',
-      address: '巴黎凯旋门区，81 Boulevard Gouvion-Saint-Cyr',
-      addressEn: '81 Boulevard Gouvion-Saint-Cyr, 75017 Paris, France',
+      name: 'Sweett - Atelier Ponthieu',
+      stars: 4,
+      priceRange: '€250-400',
+      address: '巴黎8区，香榭丽舍大街旁，蓬蒂厄街52号',
+      addressEn: '52 Rue de Ponthieu, 75008 Paris, France',
       familyRoom: true,
-      features: ['凯旋门步行10分钟', '地铁直达', '现代商务酒店', '连住第4晚'],
-      lat: 48.8796,
-      lng: 2.2860
+      features: ['香榭丽舍核心地段', '整套公寓', 'Booking.com Genius', '连住第3晚'],
+      lat: 48.8722,
+      lng: 2.3078
+    },
+    restaurants: [
+      {
+        name: 'Angelina',
+        cuisine: '甜品店',
+        priceLevel: 2,
+        specialties: ['热巧克力', '蒙布朗'],
+        kidFriendly: true
+      }
+    ],
+    transport: [
+      {
+        type: 'train',
+        from: '巴黎Saint-Lazare站',
+        to: '吉维尼',
+        duration: '往返2小时',
+        cost: '€30/人',
+        bookingTip: '火车+接驳巴士，上午出发下午返回'
+      }
+    ]
+  },
+
+  // Day 5: 凡尔赛宫一日游（原Day 4景点，凡尔赛周一闭馆，改为周二前往）
+  {
+    day: 5,
+    date: '6月16日',
+    cityId: 'paris',
+    title: '凡尔赛宫一日游',
+    summary: '路易十四的极致奢华宫殿，镜厅、法式园林，体验法国古典艺术巅峰。傍晚返回巴黎赴米其林晚餐。',
+    attractions: [
+      {
+        name: '凡尔赛宫',
+        nameEn: 'Palace of Versailles',
+        description: '路易十四建造的极致奢华宫殿，镜厅是法国古典艺术的巅峰。（每周一闭馆，周二正常开放）',
+        imageUrl: '/generated-images/Palace_of_Versailles_France__g_2026-04-21T13-16-14.png',
+        duration: '4小时',
+        familyFriendly: true,
+        tags: ['宫殿', '花园', '世界遗产']
+      }
+    ],
+    hotel: {
+      name: 'Sweett - Atelier Ponthieu',
+      stars: 4,
+      priceRange: '€250-400',
+      address: '巴黎8区，香榭丽舍大街旁，蓬蒂厄街52号',
+      addressEn: '52 Rue de Ponthieu, 75008 Paris, France',
+      familyRoom: true,
+      features: ['香榭丽舍核心地段', '整套公寓', 'Booking.com Genius', '连住第4晚（最后一晚）'],
+      lat: 48.8722,
+      lng: 2.3078
     },
     restaurants: [
       {
@@ -280,6 +301,7 @@ export const tripData: DayPlan[] = [
         priceLevel: 4,
         specialties: ['创意法餐', '西南法风味', '时令料理', '美味套餐'],
         kidFriendly: false,
+        dressCode: '👔 Smart Casual 至正式 — 高端法餐厅，建议衬衫+西裤/优雅连衣裙，避免运动鞋、短裤、拖鞋',
         address: '巴黎6区，阿萨斯街4号',
         addressEn: '4 Rue d\'Assas, 75006 Paris, France',
         lat: 48.8492,
@@ -303,11 +325,11 @@ export const tripData: DayPlan[] = [
     transport: [
       {
         type: 'train',
-        from: '巴黎Saint-Lazare站',
-        to: '吉维尼',
-        duration: '往返2小时',
-        cost: '€30/人',
-        bookingTip: '火车+接驳巴士，上午出发下午返回'
+        from: '巴黎',
+        to: '凡尔赛',
+        duration: '40分钟',
+        cost: '€7.1',
+        bookingTip: 'RER C线直达'
       }
     ]
   },
@@ -356,7 +378,8 @@ export const tripData: DayPlan[] = [
         cuisine: '米其林一星',
         priceLevel: 4,
         specialties: ['红酒炖牛肉', '勃艮第蜗牛', '黑松露料理'],
-        kidFriendly: true
+        kidFriendly: true,
+        dressCode: '👔 Smart Casual — 优雅但不拘谨，建议整洁得体着装。避免运动鞋、短裤'
       },
       {
         name: 'Mulot & Petitjean',
@@ -373,7 +396,7 @@ export const tripData: DayPlan[] = [
         to: '第戎',
         duration: '3小时',
         cost: '€30高速费+€50油费',
-        bookingTip: '走A6高速，在Auxerre休息区停留'
+        bookingTip: 'Hertz取车：Carrousel du Louvre（99 Rue de Rivoli, Level -2, 75001 Paris）| 取车 6月17日(周三) 09:30 | 营业时间 Mo-Fr 0900-1300 1400-1700, Sa 0800-1300 1400-1600, Su closed | 车型 Volvo XC60 | 还车 6月26日(周五) CDG机场T1&2F | 走A6高速，在Auxerre休息区停留'
       }
     ]
   },
@@ -415,15 +438,15 @@ export const tripData: DayPlan[] = [
       }
     ],
     hotel: {
-      name: 'Renaissance Lucerne Hotel',
-      stars: 5,
-      priceRange: 'CHF 250-450',
-      address: '卢塞恩市中心，Pilatusstrasse 15',
-      addressEn: 'Pilatusstrasse 15, 6003 Lucerne, Switzerland',
+      name: 'KoBi Apartments Hirschenplatz',
+      stars: 4,
+      priceRange: 'CHF 150-300',
+      address: '卢塞恩老城中心，Werchlaubengässli 5',
+      addressEn: 'Werchlaubengässli 5, 6004 Lucerne, Switzerland',
       familyRoom: true,
-      features: ['万豪旗下万丽酒店', '步行3分钟到火车站', '步行5分钟到卡贝尔桥', '历史建筑改造', '市中心位置'],
-      lat: 47.0502,
-      lng: 8.3093
+      features: ['老城核心鹿广场', '步行3分钟到卡贝尔桥', '完整厨房可做饭', '洗衣机+烘干机', 'Booking.com 9.1分', '独立客厅空间大', '自助入住', '附近Parkhaus Kesselturm停车场步行5分钟(CHF 35/天)'],
+      lat: 47.0514,
+      lng: 8.3076
     },
     restaurants: [
       {
@@ -873,10 +896,19 @@ export const tripData: DayPlan[] = [
         priceLevel: 4,
         specialties: ['食材至上的极致法餐', '日式美学融合', '招牌酸味运用', '超凡酒类配餐', '17公顷庄园用餐体验'],
         kidFriendly: true,
+        dressCode: '👔 Elegant — 官方要求：男士须穿长裤和包头鞋（full-length pants & closed shoes），女士优雅得体。三星级别，务必注意着装',
         address: '728 Route de Villerest, 42155 Ouches',
         addressEn: '728 Route de Villerest, 42155 Ouches, France',
         lat: 46.0167,
-        lng: 4.0333
+        lng: 4.0333,
+        reservation: {
+          date: '2026年6月24日（星期三）',
+          time: '20:00',
+          guests: 4,
+          platform: 'Troisgros官网',
+          confirmed: true,
+          notes: 'Menu "Ce jour-là" 套餐（6 Plats + Fromages + Desserts），€390/人'
+        }
       }
     ],
     transport: [
@@ -976,7 +1008,8 @@ export const tripData: DayPlan[] = [
         cuisine: '米其林法餐',
         priceLevel: 4,
         specialties: ['勃艮第红酒炖牛肉', '勃艮第蜗牛', '松露料理'],
-        kidFriendly: true
+        kidFriendly: true,
+        dressCode: '👔 Smart Casual — Loiseau集团旗下，建议整洁得体着装'
       },
       {
         name: 'Caves Madeleine',
@@ -1065,7 +1098,7 @@ export const tripData: DayPlan[] = [
         to: '巴黎CDG',
         duration: '3小时',
         cost: '€65（油费+过路费）',
-        bookingTip: 'A6高速直达，提前3.5小时到机场'
+        bookingTip: 'A6高速直达 | Hertz还车：CDG T1&2F（Charles De Gaulle Airport, 95700 Roissy）| 还车 6月26日(周五) 21:00前 | 营业时间 Mo-Su 0600-2400'
       },
       {
         type: 'flight',

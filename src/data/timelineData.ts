@@ -62,12 +62,12 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     {
       time: '07:30',
       endTime: '09:00',
-      title: '酒店check-in & 早餐',
-      description: '入住Le Méridien Etoile，寄存行李（如无法入住）。在酒店或附近面包店Du Pain et des Idées享用法式早餐。',
+      title: '公寓check-in & 早餐',
+      description: '入住Modern Duplex公寓（市中心复式5房，巴黎2区）。入住时间16:00起，先寄存行李。在附近面包店Du Pain et des Idées享用法式早餐。',
       type: 'hotel',
       icon: '🏨',
       duration: '1.5小时',
-      location: 'Le Méridien Etoile, 凯旋门区'
+      location: '18 Rue Notre Dame de Recouvrance, 75002 Paris'
     },
     {
       time: '09:00',
@@ -161,11 +161,11 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     },
     {
       time: '21:30',
-      title: '回酒店休息',
+      title: '回公寓休息',
       description: '长途飞行后的第一天，注意时差调整，早点休息。',
       type: 'rest',
       icon: '😴',
-      location: 'Le Méridien Etoile'
+      location: 'Modern Duplex, 巴黎2区'
     }
   ],
 
@@ -175,11 +175,11 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       time: '08:00',
       endTime: '09:00',
       title: '酒店早餐',
-      description: '在酒店享用法式早餐。',
+      description: '在公寓附近面包店享用法式早餐。',
       type: 'meal',
       icon: '🥐',
       duration: '1小时',
-      location: 'Le Méridien Etoile'
+      location: '公寓附近, 巴黎2区'
     },
     {
       time: '09:00',
@@ -292,11 +292,11 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     {
       time: '07:30',
       endTime: '08:00',
-      title: '酒店早餐',
+      title: '早餐',
       type: 'meal',
       icon: '🥐',
       duration: '30分钟',
-      location: 'Le Méridien Etoile'
+      location: '公寓附近, 巴黎2区'
     },
     {
       time: '08:00',
@@ -380,12 +380,12 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     {
       time: '07:30',
       endTime: '08:00',
-      title: '酒店早餐 & 退房准备',
-      description: '享用早餐，将大件行李存放在酒店（次日再取），轻装出发。',
+      title: '早餐 & 出发准备',
+      description: '享用早餐，将大件行李存放在公寓（次日再取），轻装出发。',
       type: 'meal',
       icon: '🥐',
       duration: '30分钟',
-      location: 'Le Méridien Etoile'
+      location: '公寓附近, 巴黎2区'
     },
     {
       time: '08:15',
@@ -481,21 +481,21 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       time: '07:30',
       endTime: '08:30',
       title: '退房 & 早餐',
-      description: '酒店早餐后退房，取出所有行李。',
+      description: '早餐后退房（11:00前），取出所有行李。',
       type: 'hotel',
       icon: '🧳',
       duration: '1小时',
-      location: 'Le Méridien Etoile'
+      location: 'Modern Duplex, 巴黎2区'
     },
     {
       time: '08:30',
       endTime: '09:30',
-      title: '前往取车点',
-      description: '前往巴黎租车点取车（建议Bercy或Gare de Lyon附近的Sixt/Hertz），熟悉车辆和导航。',
+      title: '前往Hertz取车',
+      description: '步行8-10分钟到Hertz Carrousel du Louvre门店取车（99 Rue de Rivoli，卢浮宫卡鲁塞尔商场地下2层，门店代码PARC65），距公寓仅600米。车型：Volvo XC60，熟悉车辆和导航。还车：6月26日CDG机场T1&2F。',
       type: 'transport',
       icon: '🚗',
       duration: '1小时',
-      location: '巴黎租车点'
+      location: 'Hertz Carrousel du Louvre, 99 Rue de Rivoli, 75001 Paris'
     },
     {
       time: '09:30',
@@ -610,11 +610,11 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       time: '13:30',
       endTime: '14:30',
       title: '入住 & 午餐',
-      description: '入住Renaissance Lucerne Hotel（万豪旗下万丽酒店，市中心五星级）。在老城区享用瑞士午餐。',
+      description: '入住KoBi Apartments Hirschenplatz（老城核心鹿广场公寓，Booking.com 9.1分，有厨房和洗衣机）。在老城区享用瑞士午餐。附近停车：Parkhaus Kesselturm，步行5分钟，CHF 35/天。',
       type: 'meal',
       icon: '🧀',
       duration: '1小时',
-      location: 'Renaissance Lucerne Hotel / 卢塞恩老城'
+      location: 'KoBi Apartments Hirschenplatz / 卢塞恩老城'
     },
     {
       time: '14:30',
@@ -669,11 +669,12 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     {
       time: '08:00',
       endTime: '08:30',
-      title: '酒店早餐',
+      title: '公寓早餐',
+      description: '在公寓厨房自己做早餐，省钱又舒适。',
       type: 'meal',
       icon: '🥐',
       duration: '30分钟',
-      location: 'Renaissance Lucerne Hotel'
+      location: 'KoBi Apartments Hirschenplatz'
     },
     {
       time: '08:30',
@@ -689,7 +690,7 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       time: '10:30',
       endTime: '11:00',
       title: '退房 & 出发',
-      description: '回酒店退房，取行李装车。',
+      description: '公寓退房（自助退房），取行李到Parkhaus Kesselturm取车。利用早晨洗衣机洗一波衣服，轻装上阵后半程！',
       type: 'hotel',
       icon: '🧳',
       duration: '30分钟'
@@ -1547,12 +1548,12 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     {
       time: '15:15',
       endTime: '16:00',
-      title: '还车',
-      description: '在CDG机场租车还车点还车，检查车况、油量。搭穿梭巴士前往2E航站楼。',
+      title: '还车 Hertz CDG',
+      description: '在CDG机场 Hertz T1&2F还车点还车（营业至24:00），检查车况、油量。搭穿梭巴士前往2E航站楼。',
       type: 'transport',
       icon: '🚗',
       duration: '45分钟',
-      location: '巴黎CDG机场租车还车点'
+      location: 'Hertz CDG T1&2F, Charles De Gaulle Airport, 95700'
     },
     {
       time: '16:00',

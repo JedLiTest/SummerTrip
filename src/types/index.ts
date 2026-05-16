@@ -33,6 +33,7 @@ export interface Restaurant {
   priceLevel: 1 | 2 | 3 | 4
   specialties: string[]
   kidFriendly: boolean
+  dressCode?: string
   address?: string
   addressEn?: string
   lat?: number
