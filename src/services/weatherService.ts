@@ -49,22 +49,28 @@ export function getWeatherInfo(code: number): { description: string; icon: strin
 }
 
 /**
+ * 解析行程日期字符串 (格式: "6月12日")
+ */
+function parseTripDate(tripDateStr: string): { year: number; month: number; day: number } | null {
+  const match = tripDateStr.match(/(\d+)月(\d+)日/)
+  if (!match) return null
+  return { year: 2026, month: parseInt(match[1]), day: parseInt(match[2]) }
+}
+
+/**
  * 计算实际要查询的天气日期
- * - 行程日期 - 今日 <= 14天: 查询行程当天实际预报
+ * - 行程日期 - 今日 <= 14天: 查询行程当天实际天气预测
  * - 行程日期 - 今日 > 14天: 使用去年同期历史天气作为参考
  */
 function getQueryDate(tripDateStr: string): { queryDate: string; isActualForecast: boolean; useHistorical: boolean } {
-  // 解析行程日期 (格式: "6月12日")
-  const match = tripDateStr.match(/(\d+)月(\d+)日/)
-  if (!match) {
+  const parsed = parseTripDate(tripDateStr)
+  if (!parsed) {
     const today = new Date()
-    const fallback = new Date(today.getTime() + 14 * 86400000)
+    const fallback = new Date(today.getTime() + 15 * 86400000)
     return { queryDate: formatDate(fallback), isActualForecast: false, useHistorical: false }
   }
 
-  const month = parseInt(match[1])
-  const day = parseInt(match[2])
-  const year = 2026 // 行程年份
+  const { year, month, day } = parsed
   const tripDate = new Date(year, month - 1, day)
   const today = new Date()
   today.setHours(0, 0, 0, 0)
@@ -72,6 +78,7 @@ function getQueryDate(tripDateStr: string): { queryDate: string; isActualForecas
   const diffDays = Math.floor((tripDate.getTime() - today.getTime()) / 86400000)
 
   if (diffDays <= 14) {
+    // Open-Meteo 预报 API 最多可靠支持约14天的预报数据
     return { queryDate: formatDate(tripDate), isActualForecast: true, useHistorical: false }
   } else {
     // 使用去年同期的日期作为历史参考
@@ -124,6 +131,45 @@ export async function fetchWeather(cityId: string, tripDateStr: string): Promise
     const daily = json.daily
 
     if (!daily || !daily.time || daily.time.length === 0) return null
+
+    // 检查 daily 数据是否有有效值（Open-Meteo 有时返回 null daily 数据）
+    if (daily.temperature_2m_max[0] == null || daily.temperature_2m_min[0] == null || daily.weather_code[0] == null) {
+      // 如果预报数据为 null，尝试回退到历史 API 获取去年同期数据
+      if (!useHistorical) {
+        const parsed = parseTripDate(tripDateStr)
+        if (!parsed) return null
+        const lastYearDate = new Date(parsed.year - 1, parsed.month - 1, parsed.day)
+        const fallbackDate = formatDate(lastYearDate)
+        const fallbackUrl = `https://archive-api.open-meteo.com/v1/archive?latitude=${city.lat}&longitude=${city.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&hourly=relative_humidity_2m&start_date=${fallbackDate}&end_date=${fallbackDate}&timezone=auto`
+        const fallbackRes = await fetch(fallbackUrl)
+        if (fallbackRes.ok) {
+          const fallbackJson = await fallbackRes.json()
+          const fbDaily = fallbackJson.daily
+          if (fbDaily && fbDaily.time?.length > 0 && fbDaily.temperature_2m_max[0] != null) {
+            let fbHumidity = 50
+            if (fallbackJson.hourly?.relative_humidity_2m) {
+              const humArr = fallbackJson.hourly.relative_humidity_2m as number[]
+              fbHumidity = humArr[12] ?? humArr[0] ?? 50
+            }
+            const fbData: WeatherData = {
+              temperature: fbDaily.temperature_2m_max[0],
+              temperatureMin: fbDaily.temperature_2m_min[0],
+              weatherCode: fbDaily.weather_code[0],
+              windSpeed: fbDaily.wind_speed_10m_max[0],
+              humidity: fbHumidity,
+              precipitation: fbDaily.precipitation_sum[0] ?? 0,
+              uvIndex: 6,
+              date: fbDaily.time[0],
+              isActualForecast: false,
+              forecastDate: fallbackDate,
+            }
+            cache[cacheKey] = { data: fbData, timestamp: Date.now() }
+            return fbData
+          }
+        }
+      }
+      return null
+    }
 
     // 取中午12点的湿度作为代表
     let humidity = 50

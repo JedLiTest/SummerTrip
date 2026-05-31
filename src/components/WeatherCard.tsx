@@ -58,7 +58,7 @@ export default function WeatherCard({ cityId, tripDate }: WeatherCardProps) {
 
   const formatForecastLabel = () => {
     if (weather.isActualForecast) {
-      return `${tripDate}天气预报`
+      return `${tripDate}天气预测`
     }
     // 显示去年同期参考天气
     const d = new Date(weather.forecastDate)
