@@ -51,78 +51,58 @@ export const timelineData: Record<number, TimelineEvent[]> = {
   2: [
     {
       time: '06:00',
-      endTime: '07:30',
+      endTime: '07:00',
       title: '抵达巴黎CDG',
-      description: '抵达戴高乐机场2E航站楼，过海关、取行李。乘出租车或Uber约45分钟到酒店。',
+      description: '抵达戴高乐机场2E航站楼，过海关、取行李。',
       type: 'transport',
       icon: '🛬',
-      duration: '1.5小时',
-      location: '巴黎CDG→酒店'
+      duration: '1小时',
+      location: '巴黎CDG 2E航站楼'
     },
     {
-      time: '07:30',
+      time: '07:00',
+      endTime: '08:00',
+      title: '机场前往市区寄存点',
+      description: '乘出租车或Uber从戴高乐机场前往巴黎1区行李寄存点，约45-60分钟。',
+      type: 'transport',
+      icon: '🚕',
+      duration: '1小时',
+      location: 'CDG→20 Rue Jean Jacques Rousseau, 75001 Paris'
+    },
+    {
+      time: '08:00',
+      endTime: '08:15',
+      title: '🧳 行李寄存',
+      description: '将大件行李寄存在 20 Rue Jean Jacques Rousseau, 75001 Paris。轻装上阵游览巴黎！',
+      type: 'transport',
+      icon: '🧳',
+      duration: '15分钟',
+      location: '20 Rue Jean Jacques Rousseau, 75001 Paris'
+    },
+    {
+      time: '08:15',
       endTime: '09:00',
-      title: '公寓check-in & 早餐',
-      description: '入住Sweett - Atelier Ponthieu公寓（香榭丽舍大街旁，巴黎8区）。入住时间16:00起，先寄存行李。在附近面包店享用法式早餐。',
-      type: 'hotel',
-      icon: '🏨',
-      duration: '1.5小时',
-      location: '52 Rue de Ponthieu, 75008 Paris'
+      title: '早餐·Les Halles区',
+      description: '行李寄存点附近就是Les Halles区域，在附近面包店享用法式早餐（可颂、咖啡）。推荐 Stohrer（巴黎最古老的面包店，1730年创立）。',
+      type: 'meal',
+      icon: '🥐',
+      duration: '45分钟',
+      location: 'Les Halles / Rue Montorgueil 区域'
     },
     {
       time: '09:00',
-      endTime: '09:30',
-      title: '地铁前往卢浮宫',
-      description: 'Porte Maillot站→Palais Royal站，M1线直达约20分钟。',
-      type: 'transport',
-      icon: '🚇',
-      duration: '30分钟',
-      location: '地铁M1线'
-    },
-    {
-      time: '09:30',
-      endTime: '12:30',
-      title: '🏛️ 卢浮宫',
-      description: '世界三大博物馆之首。推荐路线：蒙娜丽莎→胜利女神→断臂维纳斯→德农馆→法国绘画区。建议使用官方APP中文导览。',
-      type: 'attraction',
-      icon: '🏛️',
-      duration: '3小时',
-      location: 'Musée du Louvre'
-    },
-    {
-      time: '12:30',
-      endTime: '13:30',
-      title: '午餐·杜乐丽花园附近',
-      description: '在卢浮宫附近的Café Marly或杜乐丽花园旁餐厅享用午餐，短暂休息。',
-      type: 'meal',
-      icon: '🥐',
-      duration: '1小时',
-      location: '杜乐丽花园区域'
-    },
-    {
-      time: '13:30',
-      endTime: '14:00',
-      title: '步行前往香榭丽舍',
-      description: '从杜乐丽花园沿中轴线步行至协和广场，再沿香榭丽舍大道向凯旋门方向走。',
-      type: 'transport',
-      icon: '🚶',
-      duration: '30分钟',
-      location: '杜乐丽花园→协和广场'
-    },
-    {
-      time: '14:00',
-      endTime: '16:00',
+      endTime: '10:30',
       title: '🏙️ 香榭丽舍大道 & 凯旋门',
-      description: '沿香榭丽舍大道漫步，逛Louis Vuitton旗舰店等。登凯旋门284级台阶，俯瞰12条放射状大道壮观景象。',
+      description: '乘地铁至 Charles de Gaulle Étoile 站。沿香榭丽舍大道漫步，登凯旋门284级台阶，俯瞰12条放射状大道壮观景象。上午游客较少。',
       type: 'attraction',
       icon: '🏙️',
-      duration: '2小时',
+      duration: '1.5小时',
       location: 'Champs-Élysées & Arc de Triomphe'
     },
     {
-      time: '16:00',
-      endTime: '16:30',
-      title: '地铁前往埃菲尔铁塔',
+      time: '10:30',
+      endTime: '11:00',
+      title: '地铁前往铁塔',
       description: 'Charles de Gaulle Étoile→Trocadéro站，M6线约10分钟。从特罗卡德罗广场拍摄铁塔全景。',
       type: 'transport',
       icon: '🚇',
@@ -130,37 +110,97 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       location: '地铁M6线'
     },
     {
-      time: '16:30',
-      endTime: '18:00',
+      time: '11:00',
+      endTime: '12:00',
       title: '🗼 埃菲尔铁塔',
-      description: '巴黎标志。建议先在特罗卡德罗广场拍照，然后到战神广场近距离观赏。可选登塔或在草坪休息。',
+      description: '巴黎标志。先在特罗卡德罗广场拍照，然后到战神广场近距离观赏。上午人流较少，适合拍照。',
       type: 'attraction',
       icon: '🗼',
-      duration: '1.5小时',
+      duration: '1小时',
       location: 'Tour Eiffel & Champ de Mars'
     },
     {
-      time: '18:00',
-      endTime: '19:30',
-      title: '战神广场野餐/休息',
-      description: '在战神广场草坪上享受法式生活。可以从附近面包店买些面包和奶酪，体验巴黎人的日常。',
-      type: 'free',
-      icon: '🧺',
-      duration: '1.5小时',
-      location: 'Champ de Mars'
+      time: '12:00',
+      endTime: '12:45',
+      title: '午餐·铁塔附近',
+      description: '在战神广场附近快速用餐，为下午卢浮宫做准备。',
+      type: 'meal',
+      icon: '🥗',
+      duration: '45分钟',
+      location: '铁塔/战神广场附近'
     },
     {
-      time: '19:30',
-      endTime: '21:00',
+      time: '12:45',
+      endTime: '13:00',
+      title: '地铁前往卢浮宫',
+      description: 'Bir-Hakeim站→Palais Royal-Musée du Louvre站，约15分钟。',
+      type: 'transport',
+      icon: '🚇',
+      duration: '15分钟',
+      location: '地铁M6→M1'
+    },
+    {
+      time: '13:00',
+      endTime: '16:00',
+      title: '🏛️ 卢浮宫（已预订13:00场次）',
+      description: '世界三大博物馆之首。已预订13:00入场。推荐路线：蒙娜丽莎→胜利女神→断臂维纳斯→德农馆→法国绘画区。建议使用官方APP中文导览。下午场人流逐渐减少，体验更佳。',
+      type: 'attraction',
+      icon: '🏛️',
+      duration: '3小时',
+      location: 'Musée du Louvre'
+    },
+    {
+      time: '16:00',
+      endTime: '16:15',
+      title: '步行前往行李寄存点',
+      description: '卢浮宫距离寄存点仅约800米步行距离，取回寄存的行李。',
+      type: 'transport',
+      icon: '🚶',
+      duration: '15分钟',
+      location: '卢浮宫→20 Rue Jean Jacques Rousseau'
+    },
+    {
+      time: '16:15',
+      endTime: '16:30',
+      title: '🧳 取回行李',
+      description: '从寄存点取回大件行李，准备前往公寓办理入住。',
+      type: 'transport',
+      icon: '🧳',
+      duration: '15分钟',
+      location: '20 Rue Jean Jacques Rousseau, 75001 Paris'
+    },
+    {
+      time: '16:30',
+      endTime: '17:30',
+      title: '🏨 公寓 Check-in',
+      description: '前往Sweett - Atelier Ponthieu公寓（巴黎8区，香榭丽舍大街旁）办理入住。放下行李，短暂休息梳洗。入住时间16:00起。',
+      type: 'hotel',
+      icon: '🏨',
+      duration: '1小时',
+      location: '52 Rue de Ponthieu, 75008 Paris'
+    },
+    {
+      time: '17:30',
+      endTime: '18:30',
+      title: '公寓休息 & 整理',
+      description: '长途飞行后短暂休息，整理行李，换上晚餐合适的衣服。',
+      type: 'free',
+      icon: '🛋️',
+      duration: '1小时',
+      location: 'Sweett - Atelier Ponthieu, 巴黎8区'
+    },
+    {
+      time: '19:00',
+      endTime: '20:30',
       title: '晚餐·Septime',
       description: '现代法餐米其林一星，需提前数周预约。如订不到可选附近Le Casse Noix等小酒馆。',
       type: 'meal',
       icon: '🍷',
       duration: '1.5小时',
-      location: '11区或铁塔附近'
+      location: '11区或公寓附近'
     },
     {
-      time: '21:30',
+      time: '21:00',
       title: '回公寓休息',
       description: '长途飞行后的第一天，注意时差调整，早点休息。',
       type: 'rest',
@@ -270,118 +310,40 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       location: 'Sacré-Cœur台阶'
     },
     {
-      time: '19:30',
-      endTime: '21:00',
-      title: '蒙马特区晚餐',
-      description: '在蒙马特小巷中找一家地道的法式小酒馆（bistro），品尝鸭胸肉或蜗牛。',
-      type: 'meal',
-      icon: '🍷',
-      duration: '1.5小时',
-      location: 'Montmartre'
+      time: '19:00',
+      endTime: '19:45',
+      title: '前往L\'Oiseau Blanc',
+      description: '从蒙马特搭地铁前往16区半岛酒店顶层的L\'Oiseau Blanc餐厅，约30分钟。',
+      type: 'transport',
+      icon: '🚇',
+      duration: '45分钟',
+      location: '蒙马特→巴黎16区'
     },
     {
-      time: '21:30',
+      time: '19:45',
+      endTime: '21:30',
+      title: '🍷 L\'Oiseau Blanc 晚餐',
+      description: '米其林星级法餐，半岛酒店屋顶餐厅，已预订19:45（4人）。埃菲尔铁塔全景，精致法式料理。需着正式优雅服装。',
+      type: 'meal',
+      icon: '🌟',
+      duration: '1.75小时',
+      location: 'L\'Oiseau Blanc, 19 Avenue Kléber, 75116 Paris'
+    },
+    {
+      time: '22:00',
       title: '回酒店休息',
       type: 'rest',
       icon: '😴'
     }
   ],
 
-  // ===== Day 4: 凡尔赛宫一日游 6月15日 =====
+  // ===== Day 4: 吉维尼·莫奈花园 + 橘园 6月15日 =====
   4: [
     {
       time: '07:30',
       endTime: '08:00',
-      title: '早餐',
-      type: 'meal',
-      icon: '🥐',
-      duration: '30分钟',
-      location: '公寓附近, 巴黎8区'
-    },
-    {
-      time: '08:00',
-      endTime: '08:40',
-      title: 'RER C前往凡尔赛',
-      description: '从Pont de l\'Alma站搭乘RER C线至Versailles Rive Gauche站，约40分钟。建议8点出发，避开10点后的人潮。',
-      type: 'transport',
-      icon: '🚇',
-      duration: '40分钟',
-      location: 'RER C线'
-    },
-    {
-      time: '09:00',
-      endTime: '12:00',
-      title: '👑 凡尔赛宫主殿',
-      description: '路易十四的极致奢华宫殿。必看：镜厅（357面镜子）、国王大居室、王后大居室、皇家礼拜堂。建议使用中文语音导览。',
-      type: 'attraction',
-      icon: '👑',
-      duration: '3小时',
-      location: 'Château de Versailles'
-    },
-    {
-      time: '12:00',
-      endTime: '13:00',
-      title: '午餐·凡尔赛宫内',
-      description: '在宫殿内Angelina茶室品尝招牌热巧克力和蒙布朗蛋糕，或在Grand Canal旁的小餐厅用餐。',
-      type: 'meal',
-      icon: '🍰',
-      duration: '1小时',
-      location: 'Angelina (凡尔赛宫内)'
-    },
-    {
-      time: '13:00',
-      endTime: '15:00',
-      title: '🌳 凡尔赛花园',
-      description: 'Le Nôtre设计的法式花园，几何对称之美。大运河、拉东娜喷泉、玛丽·安托瓦内特小村庄（Petit Trianon）。可租自行车或小船。',
-      type: 'attraction',
-      icon: '🌳',
-      duration: '2小时',
-      location: '凡尔赛花园 & Petit Trianon'
-    },
-    {
-      time: '15:00',
-      endTime: '15:40',
-      title: 'RER C返回巴黎',
-      description: '从Versailles Rive Gauche站返回巴黎市区。',
-      type: 'transport',
-      icon: '🚇',
-      duration: '40分钟'
-    },
-    {
-      time: '16:00',
-      endTime: '17:30',
-      title: '巴黎市区自由活动',
-      description: '回酒店短暂休息，或去老佛爷百货/春天百货购物、巴黎歌剧院外观。',
-      type: 'free',
-      icon: '🛍️',
-      duration: '1.5小时',
-      location: 'Opéra区域'
-    },
-    {
-      time: '18:00',
-      endTime: '19:30',
-      title: '晚餐',
-      description: '在酒店附近凯旋门区域选一家餐厅，如Le Relais de l\'Entrecôte（不需菜单的牛排名店）。',
-      type: 'meal',
-      icon: '🥩',
-      duration: '1.5小时',
-      location: '凯旋门区域'
-    },
-    {
-      time: '20:00',
-      title: '回酒店休息',
-      type: 'rest',
-      icon: '😴'
-    }
-  ],
-
-  // ===== Day 5: 吉维尼·莫奈花园 6月16日 =====
-  5: [
-    {
-      time: '07:30',
-      endTime: '08:00',
       title: '早餐 & 出发准备',
-      description: '享用早餐，将大件行李存放在公寓（次日再取），轻装出发。',
+      description: '享用早餐，轻装出发前往吉维尼。',
       type: 'meal',
       icon: '🥐',
       duration: '30分钟',
@@ -457,17 +419,114 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       location: 'Saint-Germain-des-Prés, 75006 Paris'
     },
     {
+      time: '19:00',
+      endTime: '20:30',
+      title: '晚餐',
+      description: '在圣日耳曼区或公寓附近选一家餐厅享用晚餐。',
+      type: 'meal',
+      icon: '🍽️',
+      duration: '1.5小时',
+      location: '圣日耳曼区'
+    },
+    {
+      time: '21:00',
+      title: '回酒店休息',
+      type: 'rest',
+      icon: '😴'
+    }
+  ],
+
+  // ===== Day 5: 凡尔赛宫一日游 6月16日 =====
+  5: [
+    {
+      time: '07:30',
+      endTime: '08:00',
+      title: '早餐',
+      type: 'meal',
+      icon: '🥐',
+      duration: '30分钟',
+      location: '公寓附近, 巴黎8区'
+    },
+    {
+      time: '08:00',
+      endTime: '08:40',
+      title: 'RER C前往凡尔赛',
+      description: '从Pont de l\'Alma站搭乘RER C线至Versailles Rive Gauche站，约40分钟。建议8点出发，避开10点后的人潮。',
+      type: 'transport',
+      icon: '🚇',
+      duration: '40分钟',
+      location: 'RER C线'
+    },
+    {
+      time: '09:00',
+      endTime: '12:00',
+      title: '👑 凡尔赛宫主殿',
+      description: '路易十四的极致奢华宫殿。必看：镜厅（357面镜子）、国王大居室、王后大居室、皇家礼拜堂。建议使用中文语音导览。',
+      type: 'attraction',
+      icon: '👑',
+      duration: '3小时',
+      location: 'Château de Versailles'
+    },
+    {
+      time: '12:00',
+      endTime: '13:00',
+      title: '午餐·凡尔赛宫内',
+      description: '在宫殿内Angelina茶室品尝招牌热巧克力和蒙布朗蛋糕，或在Grand Canal旁的小餐厅用餐。',
+      type: 'meal',
+      icon: '🍰',
+      duration: '1小时',
+      location: 'Angelina (凡尔赛宫内)'
+    },
+    {
+      time: '13:00',
+      endTime: '15:00',
+      title: '🌳 凡尔赛花园',
+      description: 'Le Nôtre设计的法式花园，几何对称之美。大运河、拉东娜喷泉、玛丽·安托瓦内特小村庄（Petit Trianon）。可租自行车或小船。',
+      type: 'attraction',
+      icon: '🌳',
+      duration: '2小时',
+      location: '凡尔赛花园 & Petit Trianon'
+    },
+    {
+      time: '15:00',
+      endTime: '15:40',
+      title: 'RER C返回巴黎',
+      description: '从Versailles Rive Gauche站返回巴黎市区。',
+      type: 'transport',
+      icon: '🚇',
+      duration: '40分钟'
+    },
+    {
+      time: '16:00',
+      endTime: '17:30',
+      title: '巴黎市区自由活动',
+      description: '回酒店短暂休息，或去老佛爷百货/春天百货购物、巴黎歌剧院外观。',
+      type: 'free',
+      icon: '🛍️',
+      duration: '1.5小时',
+      location: 'Opéra区域'
+    },
+    {
+      time: '18:00',
+      endTime: '18:30',
+      title: '前往Marsan餐厅',
+      description: '从酒店前往巴黎6区Rue d\'Assas，提前到达准备用餐。',
+      type: 'transport',
+      icon: '🚇',
+      duration: '30分钟'
+    },
+    {
       time: '19:15',
       endTime: '21:00',
       title: '🍷 Marsan - Hélène Darroze 晚餐',
-      description: '米其林星级餐厅，已通过TheFork预订4人（19:15）。主厨Hélène Darroze的创意法餐，融合西南法风味。从圣日耳曼区步行仅5分钟即到。',
+      description: '米其林星级餐厅，已通过TheFork预订4人（19:15）。主厨Hélène Darroze的创意法餐，融合西南法风味。已获得200 Yums积分。',
       type: 'meal',
       icon: '🍷',
       duration: '1.75小时',
       location: 'Marsan - Hélène Darroze, 4 Rue d\'Assas, 75006 Paris'
     },
     {
-      time: '20:30',
+      time: '21:30',
       title: '回酒店·巴黎最后一晚',
       description: '明天出发去第戎，打包行李准备退房。',
       type: 'rest',
@@ -706,18 +765,18 @@ export const timelineData: Record<number, TimelineEvent[]> = {
       location: 'A8 经布伦尼格山口→龙疆→因特拉肯'
     },
     {
-      time: '11:00',
-      endTime: '12:00',
+      time: '12:00',
+      endTime: '12:30',
       title: '入住SAVOY 26',
       description: '入住SAVOY 26公寓，2卧室+阳台+露台，山景房。停车安顿行李。',
       type: 'hotel',
       icon: '🏠',
-      duration: '1小时',
+      duration: '30分钟',
       location: 'SAVOY 26, 26 Alpenstrasse, Interlaken'
     },
     {
-      time: '12:00',
-      endTime: '13:00',
+      time: '12:30',
+      endTime: '13:30',
       title: '午餐·因特拉肯',
       description: '在何维克街（Höheweg）上的Restaurant Glacier享用Rösti煎土豆饼等瑞士传统美食。',
       type: 'meal',

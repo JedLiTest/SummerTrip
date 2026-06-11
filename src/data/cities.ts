@@ -80,7 +80,7 @@ export const cities: City[] = [
     country: '法国',
     lat: 47.0256,
     lng: 4.8379,
-    days: 1,
+    days: 2,
     description: '勃艮第葡萄酒之都。UNESCO世界遗产主宫医院、Patriarche酒窖品酒、特级葡萄园之路、米其林美食，深度体验法国葡萄酒文化。',
     tags: ['葡萄酒', '世界遗产', '美食', '品酒'],
     imageUrl: '/generated-images/Beaune_town_center_France__col_2026-04-21T14-04-52.png'

@@ -42,12 +42,12 @@ export const bookingItems: BookingItem[] = [
     attractionNameEn: 'Louvre Museum',
     type: 'reservation',
     urgency: 'critical',
-    status: 'pending',
+    status: 'booked',
     price: '€22/人（18岁以下免费）',
     bookingUrl: 'https://www.louvre.fr/en/visit/tickets',
-    bookingTip: '必须提前预约时段！旺季名额紧张，建议早上9:00场次入场避开人流。⚠️ 每周二闭馆，6月13日为周六，正常开放',
+    bookingTip: '✅ 已预订13:00场次入场。⚠️ 每周二闭馆，6月13日为周六，正常开放',
     advanceDays: 30,
-    deadlineNote: '6月旺季，建议至少提前2-4周预约',
+    deadlineNote: '已预订 13:00 时段',
     cityId: 'paris'
   },
   {
@@ -76,10 +76,10 @@ export const bookingItems: BookingItem[] = [
     attractionNameEn: 'Musée d\'Orsay',
     type: 'ticket',
     urgency: 'recommended',
-    status: 'pending',
+    status: 'booked',
     price: '€16/人（18岁以下免费）',
     bookingUrl: 'https://www.musee-orsay.fr/en/visit/tickets',
-    bookingTip: '建议提前购票选择时段，避开周末高峰。周四延长至21:45。⚠️ 每周一闭馆，6月14日为周日，正常开放。2026年翻修中，需强制预约时段（timed entry），入口改在塞纳河一侧',
+    bookingTip: '✅ 门票已订。⚠️ 每周一闭馆，6月14日为周日，正常开放。2026年翻修中，需强制预约时段（timed entry），入口改在塞纳河一侧',
     advanceDays: 14,
     cityId: 'paris'
   },
@@ -115,21 +115,7 @@ export const bookingItems: BookingItem[] = [
     advanceDays: 7,
     cityId: 'paris'
   },
-  {
-    id: 'seine-cruise',
-    day: 4,
-    date: '6月15日',
-    attractionName: '塞纳河游船',
-    attractionNameEn: 'Seine River Cruise',
-    type: 'ticket',
-    urgency: 'optional',
-    status: 'pending',
-    price: '€16/人',
-    bookingUrl: 'https://www.bateaux-mouches.fr/en',
-    bookingTip: '可提前或现场购票，傍晚班次最佳。每天运营，无固定闭馆日',
-    advanceDays: 3,
-    cityId: 'paris'
-  },
+
 
   // === Day 5: 凡尔赛宫（原Day 4，凡尔赛周一闭馆改为周二前往） ===
   {

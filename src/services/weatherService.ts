@@ -96,7 +96,41 @@ function formatDate(date: Date): string {
 
 // 缓存机制
 const cache: Record<string, { data: WeatherData; timestamp: number }> = {}
-const CACHE_DURATION = 30 * 60 * 1000 // 30分钟缓存
+const CACHE_DURATION = 2 * 60 * 60 * 1000 // 2小时缓存（减少 API 调用频率）
+
+// 请求队列 —— 防止同时发出过多请求导致 429
+let requestQueue: Promise<void> = Promise.resolve()
+const REQUEST_INTERVAL = 300 // 每次请求间隔 300ms
+
+function enqueueRequest<T>(fn: () => Promise<T>): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    requestQueue = requestQueue.then(async () => {
+      await new Promise(r => setTimeout(r, REQUEST_INTERVAL))
+      try {
+        resolve(await fn())
+      } catch (e) {
+        reject(e)
+      }
+    })
+  })
+}
+
+// 带指数退避的 fetch
+async function fetchWithRetry(url: string, maxRetries = 3): Promise<Response> {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    const res = await fetch(url)
+    if (res.ok) return res
+    if (res.status === 429) {
+      // 指数退避: 2s, 4s, 8s
+      const delay = Math.pow(2, attempt + 1) * 1000
+      console.warn(`Weather API 429, retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries})`)
+      await new Promise(r => setTimeout(r, delay))
+      continue
+    }
+    throw new Error(`Weather API error: ${res.status}`)
+  }
+  throw new Error('Weather API rate limited (429), all retries exhausted')
+}
 
 /**
  * 获取某天某城市的天气
@@ -114,87 +148,89 @@ export async function fetchWeather(cityId: string, tripDateStr: string): Promise
   }
 
   try {
-    let url: string
+    return await enqueueRequest(async () => {
+      // 再次检查缓存（可能在排队等待时已被其他请求填充）
+      if (cache[cacheKey] && Date.now() - cache[cacheKey].timestamp < CACHE_DURATION) {
+        return { ...cache[cacheKey].data, isActualForecast, forecastDate: queryDate }
+      }
 
-    if (useHistorical) {
-      // 使用 Open-Meteo 历史天气 API（archive）
-      url = `https://archive-api.open-meteo.com/v1/archive?latitude=${city.lat}&longitude=${city.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&hourly=relative_humidity_2m&start_date=${queryDate}&end_date=${queryDate}&timezone=auto`
-    } else {
-      // 使用预报 API
-      url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max,uv_index_max&hourly=relative_humidity_2m&start_date=${queryDate}&end_date=${queryDate}&timezone=auto`
-    }
+      let url: string
 
-    const res = await fetch(url)
-    if (!res.ok) throw new Error(`Weather API error: ${res.status}`)
+      if (useHistorical) {
+        url = `https://archive-api.open-meteo.com/v1/archive?latitude=${city.lat}&longitude=${city.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&hourly=relative_humidity_2m&start_date=${queryDate}&end_date=${queryDate}&timezone=auto`
+      } else {
+        url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max,uv_index_max&hourly=relative_humidity_2m&start_date=${queryDate}&end_date=${queryDate}&timezone=auto`
+      }
 
-    const json = await res.json()
-    const daily = json.daily
+      const res = await fetchWithRetry(url)
+      const json = await res.json()
+      const daily = json.daily
 
-    if (!daily || !daily.time || daily.time.length === 0) return null
+      if (!daily || !daily.time || daily.time.length === 0) return null
 
-    // 检查 daily 数据是否有有效值（Open-Meteo 有时返回 null daily 数据）
-    if (daily.temperature_2m_max[0] == null || daily.temperature_2m_min[0] == null || daily.weather_code[0] == null) {
-      // 如果预报数据为 null，尝试回退到历史 API 获取去年同期数据
-      if (!useHistorical) {
-        const parsed = parseTripDate(tripDateStr)
-        if (!parsed) return null
-        const lastYearDate = new Date(parsed.year - 1, parsed.month - 1, parsed.day)
-        const fallbackDate = formatDate(lastYearDate)
-        const fallbackUrl = `https://archive-api.open-meteo.com/v1/archive?latitude=${city.lat}&longitude=${city.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&hourly=relative_humidity_2m&start_date=${fallbackDate}&end_date=${fallbackDate}&timezone=auto`
-        const fallbackRes = await fetch(fallbackUrl)
-        if (fallbackRes.ok) {
-          const fallbackJson = await fallbackRes.json()
-          const fbDaily = fallbackJson.daily
-          if (fbDaily && fbDaily.time?.length > 0 && fbDaily.temperature_2m_max[0] != null) {
-            let fbHumidity = 50
-            if (fallbackJson.hourly?.relative_humidity_2m) {
-              const humArr = fallbackJson.hourly.relative_humidity_2m as number[]
-              fbHumidity = humArr[12] ?? humArr[0] ?? 50
+      // 检查 daily 数据是否有有效值
+      if (daily.temperature_2m_max[0] == null || daily.temperature_2m_min[0] == null || daily.weather_code[0] == null) {
+        if (!useHistorical) {
+          const parsed = parseTripDate(tripDateStr)
+          if (!parsed) return null
+          const lastYearDate = new Date(parsed.year - 1, parsed.month - 1, parsed.day)
+          const fallbackDate = formatDate(lastYearDate)
+          const fallbackUrl = `https://archive-api.open-meteo.com/v1/archive?latitude=${city.lat}&longitude=${city.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&hourly=relative_humidity_2m&start_date=${fallbackDate}&end_date=${fallbackDate}&timezone=auto`
+          try {
+            const fallbackRes = await fetchWithRetry(fallbackUrl)
+            const fallbackJson = await fallbackRes.json()
+            const fbDaily = fallbackJson.daily
+            if (fbDaily && fbDaily.time?.length > 0 && fbDaily.temperature_2m_max[0] != null) {
+              let fbHumidity = 50
+              if (fallbackJson.hourly?.relative_humidity_2m) {
+                const humArr = fallbackJson.hourly.relative_humidity_2m as number[]
+                fbHumidity = humArr[12] ?? humArr[0] ?? 50
+              }
+              const fbData: WeatherData = {
+                temperature: fbDaily.temperature_2m_max[0],
+                temperatureMin: fbDaily.temperature_2m_min[0],
+                weatherCode: fbDaily.weather_code[0],
+                windSpeed: fbDaily.wind_speed_10m_max[0],
+                humidity: fbHumidity,
+                precipitation: fbDaily.precipitation_sum[0] ?? 0,
+                uvIndex: 6,
+                date: fbDaily.time[0],
+                isActualForecast: false,
+                forecastDate: fallbackDate,
+              }
+              cache[cacheKey] = { data: fbData, timestamp: Date.now() }
+              return fbData
             }
-            const fbData: WeatherData = {
-              temperature: fbDaily.temperature_2m_max[0],
-              temperatureMin: fbDaily.temperature_2m_min[0],
-              weatherCode: fbDaily.weather_code[0],
-              windSpeed: fbDaily.wind_speed_10m_max[0],
-              humidity: fbHumidity,
-              precipitation: fbDaily.precipitation_sum[0] ?? 0,
-              uvIndex: 6,
-              date: fbDaily.time[0],
-              isActualForecast: false,
-              forecastDate: fallbackDate,
-            }
-            cache[cacheKey] = { data: fbData, timestamp: Date.now() }
-            return fbData
+          } catch {
+            // fallback 也失败了，返回 null
           }
         }
+        return null
       }
-      return null
-    }
 
-    // 取中午12点的湿度作为代表
-    let humidity = 50
-    if (json.hourly?.relative_humidity_2m) {
-      const humidityArr = json.hourly.relative_humidity_2m as number[]
-      humidity = humidityArr[12] ?? humidityArr[0] ?? 50
-    }
+      // 取中午12点的湿度作为代表
+      let humidity = 50
+      if (json.hourly?.relative_humidity_2m) {
+        const humidityArr = json.hourly.relative_humidity_2m as number[]
+        humidity = humidityArr[12] ?? humidityArr[0] ?? 50
+      }
 
-    const weatherData: WeatherData = {
-      temperature: daily.temperature_2m_max[0],
-      temperatureMin: daily.temperature_2m_min[0],
-      weatherCode: daily.weather_code[0],
-      windSpeed: daily.wind_speed_10m_max[0],
-      humidity,
-      precipitation: daily.precipitation_sum[0] ?? 0,
-      uvIndex: useHistorical ? 6 : (daily.uv_index_max?.[0] ?? 0), // 历史API不含UV，用默认值
-      date: daily.time[0],
-      isActualForecast,
-      forecastDate: queryDate,
-    }
+      const weatherData: WeatherData = {
+        temperature: daily.temperature_2m_max[0],
+        temperatureMin: daily.temperature_2m_min[0],
+        weatherCode: daily.weather_code[0],
+        windSpeed: daily.wind_speed_10m_max[0],
+        humidity,
+        precipitation: daily.precipitation_sum[0] ?? 0,
+        uvIndex: useHistorical ? 6 : (daily.uv_index_max?.[0] ?? 0),
+        date: daily.time[0],
+        isActualForecast,
+        forecastDate: queryDate,
+      }
 
-    // 存入缓存
-    cache[cacheKey] = { data: weatherData, timestamp: Date.now() }
-
-    return weatherData
+      cache[cacheKey] = { data: weatherData, timestamp: Date.now() }
+      return weatherData
+    })
   } catch (err) {
     console.error('Failed to fetch weather:', err)
     return null

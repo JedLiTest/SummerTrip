@@ -47,40 +47,65 @@ export default function RouteMap() {
       resizeObserver.observe(mapRef.current)
     }
 
-    // 地图源：优先使用全球可访问的 CDN
-    const tileUrls = [
-      // CartoDB Voyager (全球可访问，稳定)
-      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-      // OpenStreetMap (全球可访问，最稳定备用)
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      // Google Maps
-      'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
+    // 地图源配置
+    const tileSources = [
+      {
+        url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+        attribution: '© <a href="https://carto.com/">CARTO</a> | © <a href="https://openstreetmap.org/">OpenStreetMap</a>',
+        subdomains: 'abcd',
+      },
+      {
+        url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        attribution: '© <a href="https://openstreetmap.org/">OpenStreetMap</a>',
+        subdomains: 'abc',
+      },
+      {
+        url: 'https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
+        attribution: '© Google Maps',
+        subdomains: '0123',
+      },
     ]
-    
-    const tileLayer = L.tileLayer(tileUrls[0], {
-      attribution: '© <a href="https://carto.com/">CARTO</a> | © <a href="https://openstreetmap.org/">OpenStreetMap</a>',
-      subdomains: 'abcd',
-      maxZoom: 20,
-      minZoom: 3
-    })
-    
+
+    let currentSource = 0
+
+    const createTileLayer = (sourceIndex: number) => {
+      const src = tileSources[sourceIndex]
+      return L.tileLayer(src.url, {
+        attribution: src.attribution,
+        subdomains: src.subdomains,
+        maxZoom: 20,
+        minZoom: 3,
+        errorTileUrl: '', // 错误瓦片不显示碎图
+      })
+    }
+
+    let tileLayer = createTileLayer(0)
     tileLayer.addTo(map)
-    
-    // 监听瓦片加载错误，自动切换到备用源
-    let retryCount = 0
+
+    // 监听瓦片加载错误，快速切换到备用源
     let errorCount = 0
+    const ERROR_THRESHOLD = 2 // 减少阈值，更快切换
     tileLayer.on('tileerror', () => {
       errorCount++
-      // 累积多个错误后才切换，避免单个瓦片偶发错误触发切换
-      if (errorCount > 3 && retryCount < tileUrls.length - 1) {
-        retryCount++
+      if (errorCount >= ERROR_THRESHOLD && currentSource < tileSources.length - 1) {
+        currentSource++
         errorCount = 0
-        console.log(`切换到备用地图源 ${retryCount}: ${tileUrls[retryCount].substring(0, 30)}...`)
-        tileLayer.setUrl(tileUrls[retryCount])
-        if (retryCount >= 2) {
-          // Google Maps 需要不同的 subdomains
-          tileLayer.options.subdomains = ['mt0', 'mt1', 'mt2', 'mt3'] as unknown as string
-        }
+        console.log(`地图瓦片加载失败，切换到备用源: ${tileSources[currentSource].url.substring(0, 40)}...`)
+        map.removeLayer(tileLayer)
+        tileLayer = createTileLayer(currentSource)
+        tileLayer.addTo(map)
+        // 为新图层也绑定错误监听
+        tileLayer.on('tileerror', () => {
+          errorCount++
+          if (errorCount >= ERROR_THRESHOLD && currentSource < tileSources.length - 1) {
+            currentSource++
+            errorCount = 0
+            console.log(`地图瓦片加载失败，切换到备用源: ${tileSources[currentSource].url.substring(0, 40)}...`)
+            map.removeLayer(tileLayer)
+            tileLayer = createTileLayer(currentSource)
+            tileLayer.addTo(map)
+          }
+        })
       }
     })
 

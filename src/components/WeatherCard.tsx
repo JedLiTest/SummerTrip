@@ -41,7 +41,13 @@ export default function WeatherCard({ cityId, tripDate }: WeatherCardProps) {
   }
 
   if (error || !weather) {
-    return null
+    // 天气加载失败时显示优雅的提示而非空白
+    return (
+      <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-gray-50 to-slate-50 border border-gray-100/50">
+        <Cloud className="w-4 h-4 text-gray-300" />
+        <span className="text-xs text-gray-400">天气数据暂时不可用</span>
+      </div>
+    )
   }
 
   const weatherInfo = getWeatherInfo(weather.weatherCode)

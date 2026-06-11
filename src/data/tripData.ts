@@ -37,16 +37,16 @@ export const tripData: DayPlan[] = [
     date: '6月13日',
     cityId: 'paris',
     title: '巴黎右岸经典',
-    summary: '卢浮宫欣赏世界艺术瑰宝，香榭丽舍大道漫步，埃菲尔铁塔欣赏夜景。',
+    summary: '抵达巴黎，行李寄存后先游览香榭丽舍和铁塔，下午1点参观卢浮宫（已预订），之后取行李入住公寓。',
     attractions: [
       {
         name: '卢浮宫',
         nameEn: 'Louvre Museum',
-        description: '世界三大博物馆之首，必看蒙娜丽莎、胜利女神、断臂维纳斯。建议提前网上购票避免排队。',
+        description: '世界三大博物馆之首，必看蒙娜丽莎、胜利女神、断臂维纳斯。已预订13:00场次入场。',
         imageUrl: '/generated-images/Louvre_Museum_in_Paris__the_ic_2026-04-21T12-37-01.png',
         duration: '3小时',
         familyFriendly: true,
-        tags: ['博物馆', '必游', '需预约']
+        tags: ['博物馆', '必游', '已预约13:00']
       },
       {
         name: '香榭丽舍大街',
@@ -1067,14 +1067,7 @@ export const tripData: DayPlan[] = [
         tags: ['航班', '返程', '法航']
       }
     ],
-    hotel: {
-      name: '',
-      stars: 0,
-      priceRange: '',
-      address: '',
-      familyRoom: false,
-      features: []
-    },
+    // Day 15 无住宿（当天返程）
     restaurants: [
       {
         name: 'La Bisotte',

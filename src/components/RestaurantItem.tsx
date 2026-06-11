@@ -69,7 +69,7 @@ export default function RestaurantItem({ restaurant }: RestaurantItemProps) {
             {Array.from({ length: restaurant.priceLevel }).map((_, i) => (
               <Euro key={i} className="w-3.5 h-3.5 text-amber-500" />
             ))}
-            {Array.from({ length: 3 - restaurant.priceLevel }).map((_, i) => (
+            {Array.from({ length: Math.max(0, 4 - restaurant.priceLevel) }).map((_, i) => (
               <Euro key={i} className="w-3.5 h-3.5 text-gray-200" />
             ))}
           </div>
