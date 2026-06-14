@@ -37,7 +37,7 @@ export const tripData: DayPlan[] = [
     date: '6月13日',
     cityId: 'paris',
     title: '巴黎右岸经典',
-    summary: '抵达巴黎，行李寄存后先游览香榭丽舍和铁塔，下午1点参观卢浮宫（已预订），之后取行李入住公寓。',
+    summary: '抵达巴黎，行李寄存后游览香榭丽舍大道和凯旋门，杜乐丽花园散步，下午1点参观卢浮宫（已预订），之后取行李入住公寓。',
     attractions: [
       {
         name: '卢浮宫',
@@ -58,13 +58,13 @@ export const tripData: DayPlan[] = [
         tags: ['地标', '购物', '观景']
       },
       {
-        name: '埃菲尔铁塔',
-        nameEn: 'Eiffel Tower',
-        description: '巴黎标志，傍晚前往可欣赏日落和夜间闪灯（每小时整点）。战神广场草坪野餐体验当地生活。',
-        imageUrl: '/generated-images/Eiffel_Tower_Paris_at_sunset___2026-04-21T13-15-28.png',
+        name: '杜乐丽花园',
+        nameEn: 'Jardin des Tuileries',
+        description: '卢浮宫旁的皇家花园，喷泉雕塑林立，悠闲散步的好去处。等待卢浮宫入场的绝佳选择。',
+        imageUrl: '/generated-images/Champs__lys_es_avenue_in_Paris_2026-04-21T13-13-49.png',
         duration: '1.5小时',
         familyFriendly: true,
-        tags: ['地标', '夜景', '必游']
+        tags: ['花园', '休闲', '拍照']
       }
     ],
     hotel: {
@@ -220,8 +220,8 @@ export const tripData: DayPlan[] = [
     day: 4,
     date: '6月15日',
     cityId: 'paris',
-    title: '巴黎漫步·圣日耳曼&玛黑',
-    summary: '悠闲巴黎日。上午圣日耳曼区文艺漫步、甜品美食，下午玛黑区购物探店，为明天的凡尔赛+莫奈长途日养精蓄锐。',
+    title: '巴黎漫步·圣日耳曼&玛黑&铁塔',
+    summary: '悠闲巴黎日。上午圣日耳曼区文艺漫步、甜品美食，下午玛黑区购物探店，傍晚前往埃菲尔铁塔拍照观景，为明天的凡尔赛+莫奈长途日养精蓄锐。',
     attractions: [
       {
         name: '圣日耳曼区漫步 & 甜品',
@@ -240,6 +240,15 @@ export const tripData: DayPlan[] = [
         duration: '2.5小时',
         familyFriendly: true,
         tags: ['购物', '美食', '潮流', '广场']
+      },
+      {
+        name: '埃菲尔铁塔',
+        nameEn: 'Eiffel Tower',
+        description: '巴黎地标！傍晚从特罗卡德罗广场拍摄铁塔全景，再到战神广场近距离观赏。夕阳下的铁塔格外浪漫。',
+        imageUrl: '/generated-images/Eiffel_Tower_Paris_at_sunset___2026-04-21T13-15-28.png',
+        duration: '1.5小时',
+        familyFriendly: true,
+        tags: ['地标', '夜景', '必游']
       }
     ],
     hotel: {
@@ -255,10 +264,17 @@ export const tripData: DayPlan[] = [
     },
     restaurants: [
       {
-        name: 'Angelina',
-        cuisine: '甜品店',
+        name: 'Café de l\'Homme',
+        cuisine: '法餐（铁塔景观）',
+        priceLevel: 3,
+        specialties: ['铁塔全景', '法式料理'],
+        kidFriendly: true
+      },
+      {
+        name: 'Les Cocottes',
+        cuisine: '现代法餐',
         priceLevel: 2,
-        specialties: ['热巧克力', '蒙布朗'],
+        specialties: ['法式焗菜', 'Christian Constant主理'],
         kidFriendly: true
       }
     ],
@@ -269,7 +285,7 @@ export const tripData: DayPlan[] = [
         to: '各景点',
         duration: '地铁+步行',
         cost: '€15',
-        bookingTip: '轻松一天，地铁+步行即可'
+        bookingTip: '圣日耳曼→玛黑→铁塔，地铁+步行'
       }
     ]
   },

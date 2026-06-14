@@ -101,43 +101,33 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     },
     {
       time: '10:30',
-      endTime: '11:00',
-      title: '地铁前往铁塔',
-      description: 'Charles de Gaulle Étoile→Trocadéro站，M6线约10分钟。从特罗卡德罗广场拍摄铁塔全景。',
-      type: 'transport',
-      icon: '🚇',
-      duration: '30分钟',
-      location: '地铁M6线'
-    },
-    {
-      time: '11:00',
-      endTime: '12:00',
-      title: '🗼 埃菲尔铁塔',
-      description: '巴黎标志。先在特罗卡德罗广场拍照，然后到战神广场近距离观赏。上午人流较少，适合拍照。',
-      type: 'attraction',
-      icon: '🗼',
-      duration: '1小时',
-      location: 'Tour Eiffel & Champ de Mars'
-    },
-    {
-      time: '12:00',
-      endTime: '12:45',
-      title: '午餐·铁塔附近',
-      description: '在战神广场附近快速用餐，为下午卢浮宫做准备。',
+      endTime: '11:15',
+      title: '午餐·香榭丽舍附近',
+      description: '在香榭丽舍大道附近享用轻便午餐，为下午卢浮宫做准备。推荐 Ladurée 或附近的小酒馆。',
       type: 'meal',
       icon: '🥗',
       duration: '45分钟',
-      location: '铁塔/战神广场附近'
+      location: '香榭丽舍大道附近'
     },
     {
-      time: '12:45',
-      endTime: '13:00',
-      title: '地铁前往卢浮宫',
-      description: 'Bir-Hakeim站→Palais Royal-Musée du Louvre站，约15分钟。',
+      time: '11:15',
+      endTime: '11:30',
+      title: '地铁前往杜乐丽花园',
+      description: '从 George V 站搭 M1 到 Tuileries 站，约10分钟。',
       type: 'transport',
       icon: '🚇',
       duration: '15分钟',
-      location: '地铁M6→M1'
+      location: 'George V → Tuileries (M1)'
+    },
+    {
+      time: '11:30',
+      endTime: '13:00',
+      title: '🌳 杜乐丽花园散步',
+      description: '在卢浮宫旁的杜乐丽花园悠闲散步，等待13:00卢浮宫入场。花园内有喷泉、雕塑，孩子可以在草坪上休息。飞行后正好放松一下。',
+      type: 'attraction',
+      icon: '🌳',
+      duration: '1.5小时',
+      location: 'Jardin des Tuileries, 75001 Paris'
     },
     {
       time: '13:00',
@@ -409,38 +399,48 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     },
     {
       time: '16:30',
-      endTime: '17:30',
-      title: '下午茶·Angelina',
-      description: '前往里沃利街的百年茶室Angelina，品尝招牌热巧克力和蒙布朗蛋糕。',
-      type: 'meal',
-      icon: '🍰',
-      duration: '1小时',
-      location: 'Angelina, 226 Rue de Rivoli'
+      endTime: '17:00',
+      title: '地铁前往铁塔',
+      description: '从玛黑区 Saint-Paul 站搭 M1 到 Franklin D. Roosevelt，换 M9 到 Trocadéro 站（约20分钟）。',
+      type: 'transport',
+      icon: '🚇',
+      duration: '30分钟',
+      location: 'Saint-Paul → Trocadéro (M1+M9)'
     },
     {
-      time: '17:30',
+      time: '17:00',
       endTime: '18:30',
-      title: '回公寓休息',
-      description: '回公寓休息整理，为明天的长途日做准备。可以去附近超市采购些零食和水。',
-      type: 'free',
-      icon: '🛋️',
-      duration: '1小时',
-      location: 'Sweett - Atelier Ponthieu'
+      title: '🗼 埃菲尔铁塔',
+      description: '巴黎地标！先从特罗卡德罗广场拍摄铁塔全景（最佳拍照点），再走下阶梯过桥到战神广场近距离观赏。傍晚光线柔和，非常适合拍照。可在草坪上休息，孩子也能在广场奔跑玩耍。',
+      type: 'attraction',
+      icon: '🗼',
+      duration: '1.5小时',
+      location: 'Trocadéro & Tour Eiffel & Champ de Mars'
     },
     {
-      time: '19:00',
-      endTime: '20:30',
-      title: '晚餐',
-      description: '在公寓附近或香榭丽舍大街附近选一家餐厅轻松晚餐。',
+      time: '18:30',
+      endTime: '19:30',
+      title: '晚餐·铁塔附近',
+      description: '在铁塔附近用餐。推荐 Café de l\'Homme（特罗卡德罗，铁塔景观餐厅）或 Les Cocottes（Christian Constant主理，性价比高）。',
       type: 'meal',
       icon: '🍽️',
-      duration: '1.5小时',
-      location: '巴黎8区'
+      duration: '1小时',
+      location: '铁塔/特罗卡德罗附近'
     },
     {
-      time: '21:00',
-      title: '早点休息',
-      description: '明天是凡尔赛+莫奈的充实长途日，建议早睡！',
+      time: '19:30',
+      endTime: '20:00',
+      title: '地铁回公寓',
+      description: '从 Trocadéro 搭 M9 到 Franklin D. Roosevelt 站，步行回公寓。约15分钟。',
+      type: 'transport',
+      icon: '🚇',
+      duration: '30分钟',
+      location: 'Trocadéro → Franklin D. Roosevelt (M9)'
+    },
+    {
+      time: '20:00',
+      title: '回公寓休息',
+      description: '明天是凡尔赛+莫奈的充实长途日，建议早睡！可以去附近超市采购些零食和水。',
       type: 'rest',
       icon: '😴'
     }
