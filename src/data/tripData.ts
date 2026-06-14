@@ -107,13 +107,13 @@ export const tripData: DayPlan[] = [
     ]
   },
 
-  // Day 3: 巴黎 II
+  // Day 3: 巴黎 II（奥赛+橘园+圣母院+蒙马特）
   {
     day: 3,
     date: '6月14日',
     cityId: 'paris',
-    title: '巴黎左岸艺术',
-    summary: '奥赛博物馆印象派艺术、巴黎圣母院、玛黑区漫步、蒙马特高地日落。',
+    title: '巴黎左岸艺术·橘园·圣母院',
+    summary: '奥赛博物馆印象派艺术、橘园美术馆莫奈睡莲、巴黎圣母院（15:45预约）、蒙马特高地日落。',
     attractions: [
       {
         name: '奥赛博物馆',
@@ -123,6 +123,24 @@ export const tripData: DayPlan[] = [
         duration: '2.5小时',
         familyFriendly: true,
         tags: ['博物馆', '印象派']
+      },
+      {
+        name: '橘园美术馆',
+        nameEn: 'Musée de l\'Orangerie',
+        description: '杜乐丽花园内，专门收藏莫奈大型睡莲系列。两个椭圆形展厅，360度环绕式欣赏莫奈晚年巨作。（每周二闭馆，6月14日周日正常开放）',
+        imageUrl: '/generated-images/Mus_e_de_l_Orangerie_in_Paris__2026-04-21T12-36-58.png',
+        duration: '1.5小时',
+        familyFriendly: true,
+        tags: ['博物馆', '莫奈', '印象派']
+      },
+      {
+        name: '巴黎圣母院',
+        nameEn: 'Notre-Dame de Paris',
+        description: '2024年底重新开放的巴黎圣母院，已预约6月14日15:45入场。哥特式建筑杰作，玫瑰花窗、飞扶壁、尖塔修复后焕然一新。',
+        imageUrl: '/generated-images/Montmartre_hill_in_Paris_with__2026-04-21T12-37-02.png',
+        duration: '1小时',
+        familyFriendly: true,
+        tags: ['教堂', '地标', '已预约15:45']
       },
       {
         name: '蒙马特高地',
@@ -197,40 +215,31 @@ export const tripData: DayPlan[] = [
     ]
   },
 
-  // Day 4: 吉维尼·莫奈花园 + 橘园美术馆（原Day 5景点，因凡尔赛周一闭馆而互换）
+  // Day 4: 巴黎自由日（6月15日周一，圣日耳曼区漫步&购物&休闲）
   {
     day: 4,
     date: '6月15日',
     cityId: 'paris',
-    title: '吉维尼·莫奈花园 + 橘园',
-    summary: '上午前往吉维尼参观莫奈故居和花园，《睡莲》创作地。下午返回巴黎，橘园美术馆欣赏大型睡莲，圣日耳曼区漫步&甜品。',
+    title: '巴黎漫步·圣日耳曼&玛黑',
+    summary: '悠闲巴黎日。上午圣日耳曼区文艺漫步、甜品美食，下午玛黑区购物探店，为明天的凡尔赛+莫奈长途日养精蓄锐。',
     attractions: [
-      {
-        name: '莫奈花园',
-        nameEn: 'Giverny - Monet\'s Garden',
-        description: '印象派大师莫奈的故居和花园，《睡莲》系列创作地。日本桥、睡莲池、鸢尾花园，完美还原莫奈画作中的场景。最佳参观时间5-9月花期。',
-        imageUrl: '/generated-images/Claude_Monet_s_Garden_in_Giver_2026-04-21T13-34-52.png',
-        duration: '3小时',
-        familyFriendly: true,
-        tags: ['花园', '印象派', '艺术', '摄影']
-      },
-      {
-        name: '橘园美术馆',
-        nameEn: 'Musée de l\'Orangerie',
-        description: '杜乐丽花园内，专门收藏莫奈大型睡莲系列。两个椭圆形展厅，360度环绕式欣赏莫奈晚年巨作。（每周二闭馆，周一正常开放）',
-        imageUrl: '/generated-images/Mus_e_de_l_Orangerie_in_Paris__2026-04-21T12-36-58.png',
-        duration: '1.5小时',
-        familyFriendly: true,
-        tags: ['博物馆', '莫奈', '印象派']
-      },
       {
         name: '圣日耳曼区漫步 & 甜品',
         nameEn: 'Saint-Germain-des-Prés Walk & Pâtisserie',
         description: '巴黎最文艺的街区！逛Shakespeare and Company传奇书店、Pierre Hermé品尝顶级马卡龙、Café de Flore门口打卡。沿Rue de Seine逛画廊和vintage小店，孩子可以挑选纪念品。',
         imageUrl: '/generated-images/A_realistic_photograph_of_Sain_2026-04-26T08-55-45.png',
-        duration: '1小时45分',
+        duration: '3小时',
         familyFriendly: true,
         tags: ['购物', '甜品', '文艺', '书店']
+      },
+      {
+        name: '玛黑区',
+        nameEn: 'Le Marais',
+        description: '巴黎最潮街区，犹太街L\'As du Fallafel中东美食、vintage服饰店铺、Place des Vosges（孚日广场）法国最古老的皇家广场。适合全家漫步购物。',
+        imageUrl: '/generated-images/Montmartre_hill_in_Paris_with__2026-04-21T12-37-02.png',
+        duration: '2.5小时',
+        familyFriendly: true,
+        tags: ['购物', '美食', '潮流', '广场']
       }
     ],
     hotel: {
@@ -255,32 +264,41 @@ export const tripData: DayPlan[] = [
     ],
     transport: [
       {
-        type: 'train',
-        from: '巴黎Saint-Lazare站',
-        to: '吉维尼',
-        duration: '往返2小时',
-        cost: '€30/人',
-        bookingTip: '火车+接驳巴士，上午出发下午返回'
+        type: 'walk',
+        from: '酒店',
+        to: '各景点',
+        duration: '地铁+步行',
+        cost: '€15',
+        bookingTip: '轻松一天，地铁+步行即可'
       }
     ]
   },
 
-  // Day 5: 凡尔赛宫一日游（原Day 4景点，凡尔赛周一闭馆，改为周二前往）
+  // Day 5: 凡尔赛宫 + 莫奈花园（6月16日周二，已购票：凡尔赛10:20含中文讲解 + 莫奈15:30）
   {
     day: 5,
     date: '6月16日',
     cityId: 'paris',
-    title: '凡尔赛宫一日游',
-    summary: '路易十四的极致奢华宫殿，镜厅、法式园林，体验法国古典艺术巅峰。傍晚返回巴黎赴米其林晚餐。',
+    title: '凡尔赛宫 + 莫奈花园',
+    summary: '上午凡尔赛宫（10:20含中文讲解），午后火车前往吉维尼参观莫奈花园（15:30），17:57火车返回巴黎Saint-Lazare。晚上米其林晚餐。充实满满的一天！',
     attractions: [
       {
         name: '凡尔赛宫',
         nameEn: 'Palace of Versailles',
-        description: '路易十四建造的极致奢华宫殿，镜厅是法国古典艺术的巅峰。（每周一闭馆，周二正常开放）',
+        description: '路易十四建造的极致奢华宫殿，镜厅是法国古典艺术的巅峰。已购票10:20场含中文人工讲解（成人2+儿童2）。（每周一闭馆，6月16日周二正常开放）',
         imageUrl: '/generated-images/Palace_of_Versailles_France__g_2026-04-21T13-16-14.png',
-        duration: '4小时',
+        duration: '3小时',
         familyFriendly: true,
-        tags: ['宫殿', '花园', '世界遗产']
+        tags: ['宫殿', '花园', '世界遗产', '已预约10:20']
+      },
+      {
+        name: '莫奈花园',
+        nameEn: 'Giverny - Monet\'s Garden',
+        description: '印象派大师莫奈的故居和花园，《睡莲》系列创作地。日本桥、睡莲池、鸢尾花园。已购票15:30场（4份）。17:57从Vernon搭火车返回巴黎Saint-Lazare（18:49到达）。',
+        imageUrl: '/generated-images/Claude_Monet_s_Garden_in_Giver_2026-04-21T13-34-52.png',
+        duration: '2小时',
+        familyFriendly: true,
+        tags: ['花园', '印象派', '艺术', '已预约15:30']
       }
     ],
     hotel: {
@@ -329,7 +347,15 @@ export const tripData: DayPlan[] = [
         to: '凡尔赛',
         duration: '40分钟',
         cost: '€7.1',
-        bookingTip: 'RER C线直达'
+        bookingTip: 'RER C线直达凡尔赛'
+      },
+      {
+        type: 'train',
+        from: 'Vernon-Giverny',
+        to: 'Paris Saint-Lazare',
+        duration: '52分钟',
+        cost: '已购票',
+        bookingTip: 'TER NOMAD 17:57发车→18:49到达Saint-Lazare（Voyageurs 1187 | 13148）'
       }
     ]
   },

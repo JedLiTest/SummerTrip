@@ -209,7 +209,7 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     }
   ],
 
-  // ===== Day 3: 巴黎左岸艺术 6月14日 =====
+  // ===== Day 3: 巴黎左岸艺术·橘园·圣母院 6月14日 =====
   3: [
     {
       time: '08:00',
@@ -242,72 +242,82 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     },
     {
       time: '12:00',
-      endTime: '12:30',
+      endTime: '12:15',
+      title: '步行前往橘园',
+      description: '从奥赛博物馆过桥步行约10分钟即到杜乐丽花园内的橘园美术馆。',
+      type: 'transport',
+      icon: '🚶',
+      duration: '15分钟',
+      location: "Musée d'Orsay → Musée de l'Orangerie"
+    },
+    {
+      time: '12:15',
+      endTime: '13:30',
+      title: '🎨 橘园美术馆',
+      description: '杜乐丽花园内，两个椭圆形展厅360度环绕莫奈晚年巨型睡莲。刚在奥赛看完印象派画作，再到橘园沉浸式欣赏莫奈巨幅睡莲，衔接完美！',
+      type: 'attraction',
+      icon: '🎨',
+      duration: '1.25小时',
+      location: "Musée de l'Orangerie, Tuileries"
+    },
+    {
+      time: '13:30',
+      endTime: '14:00',
       title: '步行前往La Jacobine',
-      description: '从奥赛博物馆沿塞纳河左岸向东步行约15-20分钟，经过圣日耳曼区，前往拉丁区的La Jacobine餐厅。',
+      description: '从橘园沿塞纳河左岸向东步行约20分钟，经过圣日耳曼区，前往拉丁区的La Jacobine餐厅。',
       type: 'transport',
       icon: '🚶',
       duration: '30分钟',
-      location: "Musée d'Orsay → Rue Saint-André des Arts"
+      location: "Orangerie → Rue Saint-André des Arts"
     },
     {
-      time: '12:30',
-      endTime: '13:30',
+      time: '14:00',
+      endTime: '15:00',
       title: '午餐·La Jacobine',
-      description: '已预订12:30，4人。位于拉丁区圣安德烈街的法式餐厅，环境温馨，提供经典法式料理。距奥赛博物馆步行15分钟，距巴黎圣母院步行仅10分钟。',
+      description: '已预订12:30，4人（可改时间或直接walk-in）。位于拉丁区圣安德烈街的法式餐厅，环境温馨。距巴黎圣母院步行仅10分钟。',
       type: 'meal',
       icon: '🍽️',
       duration: '1小时',
       location: '59-61 Rue Saint-André des Arts, 75006 Paris'
     },
     {
-      time: '13:30',
-      endTime: '14:15',
-      title: '🏰 巴黎圣母院外观',
-      description: '从La Jacobine步行仅10分钟过桥即到西岱岛。圣母院仍在修复中，可欣赏外观和周边小岛风光。',
-      type: 'attraction',
-      icon: '🏰',
-      duration: '45分钟',
-      location: 'Île de la Cité'
-    },
-    {
-      time: '14:15',
-      endTime: '15:30',
-      title: '玛黑区漫步',
-      description: '过桥前往右岸玛黑区，犹太街falafel、vintage店铺、孚日广场。最潮的巴黎年轻人社区。',
-      type: 'attraction',
+      time: '15:00',
+      endTime: '15:15',
+      title: '步行前往巴黎圣母院',
+      description: '从La Jacobine过桥步行10分钟即到西岱岛圣母院。',
+      type: 'transport',
       icon: '🚶',
-      duration: '1.25小时',
-      location: 'Le Marais'
+      duration: '15分钟',
+      location: 'Saint-André des Arts → Notre-Dame'
     },
     {
-      time: '15:30',
-      endTime: '16:00',
+      time: '15:45',
+      endTime: '16:45',
+      title: '⛪ 巴黎圣母院（已预约15:45入场）',
+      description: '2024年底修复重新开放！已预约15:45入场（Shaojun Yun名义）。哥特式建筑杰作，全新修复的玫瑰花窗、飞扶壁、尖塔。务必准时到达入口。',
+      type: 'attraction',
+      icon: '⛪',
+      duration: '1小时',
+      location: 'Notre-Dame de Paris, Île de la Cité'
+    },
+    {
+      time: '16:45',
+      endTime: '17:15',
       title: '地铁前往蒙马特',
-      description: 'Saint-Paul→Anvers站，M1转M2约20分钟。',
+      description: 'Cité→Anvers站，M4转M2约20分钟。',
       type: 'transport',
       icon: '🚇',
       duration: '30分钟'
     },
     {
-      time: '16:00',
-      endTime: '18:00',
+      time: '17:15',
+      endTime: '19:00',
       title: '⛪ 蒙马特高地 & 圣心教堂',
-      description: '登上蒙马特高地，圣心教堂白色圆顶是巴黎制高点。台阶上坐下看街头艺人表演，小丘广场看画家作画。',
+      description: '登上蒙马特高地，圣心教堂白色圆顶是巴黎制高点。台阶上坐下看街头艺人表演，小丘广场看画家作画。等待日落。',
       type: 'attraction',
       icon: '⛪',
-      duration: '2小时',
+      duration: '1.75小时',
       location: 'Montmartre & Sacré-Cœur'
-    },
-    {
-      time: '18:00',
-      endTime: '19:00',
-      title: '蒙马特日落',
-      description: '在圣心教堂前的大台阶上欣赏巴黎日落全景，金色的光线洒满整个城市。',
-      type: 'free',
-      icon: '🌅',
-      duration: '1小时',
-      location: 'Sacré-Cœur台阶'
     },
     {
       time: '19:00',
@@ -337,189 +347,220 @@ export const timelineData: Record<number, TimelineEvent[]> = {
     }
   ],
 
-  // ===== Day 4: 吉维尼·莫奈花园 + 橘园 6月15日 =====
+  // ===== Day 4: 巴黎漫步·圣日耳曼&玛黑 6月15日 =====
   4: [
     {
-      time: '07:30',
-      endTime: '08:00',
-      title: '早餐 & 出发准备',
-      description: '享用早餐，轻装出发前往吉维尼。',
-      type: 'meal',
-      icon: '🥐',
-      duration: '30分钟',
-      location: '公寓附近, 巴黎8区'
-    },
-    {
-      time: '08:15',
-      endTime: '09:30',
-      title: '火车前往吉维尼',
-      description: '从Paris Saint-Lazare站搭火车至Vernon站（约45分钟），再换接驳巴士至吉维尼（约15分钟）。',
-      type: 'transport',
-      icon: '🚂',
-      duration: '1.25小时',
-      location: 'Saint-Lazare→Vernon→Giverny'
-    },
-    {
-      time: '09:30',
-      endTime: '12:30',
-      title: '🌸 莫奈花园',
-      description: '印象派大师的灵感花园。先参观花园（日本桥、睡莲池、玫瑰拱廊最美），再进故居看莫奈的画室和蓝色厨房。上午光线最适合拍照。',
-      type: 'attraction',
-      icon: '🌸',
-      duration: '3小时',
-      location: 'Fondation Claude Monet, Giverny'
-    },
-    {
-      time: '12:30',
-      endTime: '13:30',
-      title: '午餐·吉维尼小镇',
-      description: '在小镇上的Les Nymphéas或Baudy餐厅用餐，前者能看到莫奈花园，后者是当年印象派画家们的聚会地。',
-      type: 'meal',
-      icon: '🥗',
-      duration: '1小时',
-      location: 'Giverny小镇'
-    },
-    {
-      time: '13:30',
-      endTime: '15:00',
-      title: '返回巴黎',
-      description: '接驳巴士+火车返回Paris Saint-Lazare站。',
-      type: 'transport',
-      icon: '🚂',
-      duration: '1.5小时'
-    },
-    {
-      time: '15:00',
-      endTime: '16:30',
-      title: '🎨 橘园美术馆',
-      description: '杜乐丽花园内，两个椭圆形展厅360度环绕莫奈晚年巨型睡莲。刚看完实物花园再看画作，感受完全不同！',
-      type: 'attraction',
-      icon: '🎨',
-      duration: '1.5小时',
-      location: "Musée de l'Orangerie, Tuileries"
-    },
-    {
-      time: '16:30',
-      endTime: '17:00',
-      title: '步行前往圣日耳曼区',
-      description: '从橘园美术馆沿塞纳河左岸步行，经奥赛博物馆方向前往圣日耳曼德佩区，沿途欣赏塞纳河畔风光。',
-      type: 'transport',
-      icon: '🚶',
-      duration: '30分钟',
-      location: '杜乐丽花园 → Saint-Germain-des-Prés'
-    },
-    {
-      time: '17:00',
-      endTime: '18:45',
-      title: '🛍️ 圣日耳曼区漫步 & 甜品',
-      description: '巴黎最文艺的街区！逛Shakespeare and Company书店（塞纳河畔传奇英文书店）、Pierre Hermé品尝顶级马卡龙、Café de Flore或Les Deux Magots门口打卡拍照。沿Rue de Seine逛画廊和vintage小店，孩子可以挑选纪念品。',
-      type: 'attraction',
-      icon: '🛍️',
-      duration: '1小时45分',
-      location: 'Saint-Germain-des-Prés, 75006 Paris'
-    },
-    {
-      time: '19:00',
-      endTime: '20:30',
-      title: '晚餐',
-      description: '在圣日耳曼区或公寓附近选一家餐厅享用晚餐。',
-      type: 'meal',
-      icon: '🍽️',
-      duration: '1.5小时',
-      location: '圣日耳曼区'
-    },
-    {
-      time: '21:00',
-      title: '回酒店休息',
-      type: 'rest',
-      icon: '😴'
-    }
-  ],
-
-  // ===== Day 5: 凡尔赛宫一日游 6月16日 =====
-  5: [
-    {
-      time: '07:30',
-      endTime: '08:00',
-      title: '早餐',
-      type: 'meal',
-      icon: '🥐',
-      duration: '30分钟',
-      location: '公寓附近, 巴黎8区'
-    },
-    {
-      time: '08:00',
-      endTime: '08:40',
-      title: 'RER C前往凡尔赛',
-      description: '从Pont de l\'Alma站搭乘RER C线至Versailles Rive Gauche站，约40分钟。建议8点出发，避开10点后的人潮。',
-      type: 'transport',
-      icon: '🚇',
-      duration: '40分钟',
-      location: 'RER C线'
-    },
-    {
       time: '09:00',
-      endTime: '12:00',
-      title: '👑 凡尔赛宫主殿',
-      description: '路易十四的极致奢华宫殿。必看：镜厅（357面镜子）、国王大居室、王后大居室、皇家礼拜堂。建议使用中文语音导览。',
-      type: 'attraction',
-      icon: '👑',
-      duration: '3小时',
-      location: 'Château de Versailles'
-    },
-    {
-      time: '12:00',
-      endTime: '13:00',
-      title: '午餐·凡尔赛宫内',
-      description: '在宫殿内Angelina茶室品尝招牌热巧克力和蒙布朗蛋糕，或在Grand Canal旁的小餐厅用餐。',
+      endTime: '10:00',
+      title: '悠闲早餐',
+      description: '不设闹钟，自然醒后在公寓附近的面包店享用法式早餐。为明天的凡尔赛+莫奈充实日养精蓄锐。',
       type: 'meal',
-      icon: '🍰',
+      icon: '🥐',
       duration: '1小时',
-      location: 'Angelina (凡尔赛宫内)'
+      location: '公寓附近, 巴黎8区'
     },
     {
-      time: '13:00',
-      endTime: '15:00',
-      title: '🌳 凡尔赛花园',
-      description: 'Le Nôtre设计的法式花园，几何对称之美。大运河、拉东娜喷泉、玛丽·安托瓦内特小村庄（Petit Trianon）。可租自行车或小船。',
-      type: 'attraction',
-      icon: '🌳',
-      duration: '2小时',
-      location: '凡尔赛花园 & Petit Trianon'
-    },
-    {
-      time: '15:00',
-      endTime: '15:40',
-      title: 'RER C返回巴黎',
-      description: '从Versailles Rive Gauche站返回巴黎市区。',
-      type: 'transport',
-      icon: '🚇',
-      duration: '40分钟'
-    },
-    {
-      time: '16:00',
-      endTime: '17:30',
-      title: '巴黎市区自由活动',
-      description: '回酒店短暂休息，或去老佛爷百货/春天百货购物、巴黎歌剧院外观。',
-      type: 'free',
-      icon: '🛍️',
-      duration: '1.5小时',
-      location: 'Opéra区域'
-    },
-    {
-      time: '18:00',
-      endTime: '18:30',
-      title: '前往Marsan餐厅',
-      description: '从酒店前往巴黎6区Rue d\'Assas，提前到达准备用餐。',
+      time: '10:00',
+      endTime: '10:30',
+      title: '地铁前往圣日耳曼区',
+      description: '从公寓搭地铁M1到Saint-Germain-des-Prés站，约20分钟。',
       type: 'transport',
       icon: '🚇',
       duration: '30分钟'
     },
     {
+      time: '10:30',
+      endTime: '12:30',
+      title: '🛍️ 圣日耳曼区漫步 & 甜品',
+      description: '巴黎最文艺的街区！逛Shakespeare and Company书店（塞纳河畔传奇英文书店）、Pierre Hermé品尝顶级马卡龙、Café de Flore或Les Deux Magots门口打卡拍照。沿Rue de Seine逛画廊和vintage小店，孩子可以挑选纪念品。',
+      type: 'attraction',
+      icon: '🛍️',
+      duration: '2小时',
+      location: 'Saint-Germain-des-Prés, 75006 Paris'
+    },
+    {
+      time: '12:30',
+      endTime: '13:30',
+      title: '午餐·圣日耳曼区',
+      description: '在圣日耳曼区选一家小餐馆享用午餐，推荐Le Comptoir du Panthéon或附近的小酒馆。',
+      type: 'meal',
+      icon: '🍽️',
+      duration: '1小时',
+      location: 'Saint-Germain-des-Prés'
+    },
+    {
+      time: '13:30',
+      endTime: '14:00',
+      title: '地铁前往玛黑区',
+      description: '搭地铁前往玛黑区（Saint-Paul站），约15分钟。',
+      type: 'transport',
+      icon: '🚇',
+      duration: '30分钟'
+    },
+    {
+      time: '14:00',
+      endTime: '16:30',
+      title: '🏘️ 玛黑区探店',
+      description: '巴黎最潮街区。犹太街L\'As du Fallafel中东美食、vintage服饰店、Place des Vosges（孚日广场）漫步、精品咖啡馆。孩子可以在广场公园玩耍。',
+      type: 'attraction',
+      icon: '🏘️',
+      duration: '2.5小时',
+      location: 'Le Marais, 75004 Paris'
+    },
+    {
+      time: '16:30',
+      endTime: '17:30',
+      title: '下午茶·Angelina',
+      description: '前往里沃利街的百年茶室Angelina，品尝招牌热巧克力和蒙布朗蛋糕。',
+      type: 'meal',
+      icon: '🍰',
+      duration: '1小时',
+      location: 'Angelina, 226 Rue de Rivoli'
+    },
+    {
+      time: '17:30',
+      endTime: '18:30',
+      title: '回公寓休息',
+      description: '回公寓休息整理，为明天的长途日做准备。可以去附近超市采购些零食和水。',
+      type: 'free',
+      icon: '🛋️',
+      duration: '1小时',
+      location: 'Sweett - Atelier Ponthieu'
+    },
+    {
+      time: '19:00',
+      endTime: '20:30',
+      title: '晚餐',
+      description: '在公寓附近或香榭丽舍大街附近选一家餐厅轻松晚餐。',
+      type: 'meal',
+      icon: '🍽️',
+      duration: '1.5小时',
+      location: '巴黎8区'
+    },
+    {
+      time: '21:00',
+      title: '早点休息',
+      description: '明天是凡尔赛+莫奈的充实长途日，建议早睡！',
+      type: 'rest',
+      icon: '😴'
+    }
+  ],
+
+  // ===== Day 5: 凡尔赛宫 + 莫奈花园 6月16日 =====
+  5: [
+    {
+      time: '07:00',
+      endTime: '07:30',
+      title: '早餐',
+      description: '早起快速早餐，今天行程紧凑！',
+      type: 'meal',
+      icon: '🥐',
+      duration: '30分钟',
+      location: '公寓附近, 巴黎8区'
+    },
+    {
+      time: '07:30',
+      endTime: '08:00',
+      title: '地铁前往 Gare Saint-Lazare',
+      description: '从公寓搭地铁前往Saint-Lazare火车站，寄存当天不需要的物品。',
+      type: 'transport',
+      icon: '🚇',
+      duration: '30分钟'
+    },
+    {
+      time: '08:00',
+      endTime: '09:00',
+      title: '🚂 Saint-Lazare → Versailles Chantiers',
+      description: '从Saint-Lazare搭乘Transilien N线至Versailles Chantiers站（约35分钟），步行15分钟到达凡尔赛宫。',
+      type: 'transport',
+      icon: '🚂',
+      duration: '1小时',
+      location: 'Saint-Lazare→Versailles'
+    },
+    {
+      time: '09:00',
+      endTime: '10:20',
+      title: '凡尔赛宫排队等待',
+      description: '提前到达凡尔赛宫入口，购买花园票或在附近等待10:20入场时间。可先逛宫殿外围和广场。',
+      type: 'free',
+      icon: '🏰',
+      duration: '1.3小时',
+      location: 'Château de Versailles 入口'
+    },
+    {
+      time: '10:20',
+      endTime: '13:00',
+      title: '👑 凡尔赛宫（10:20含中文讲解）',
+      description: '已购票10:20场含中文人工讲解服务（成人2+儿童2）。讲解员带领参观镜厅、国王大居室、王后大居室、皇家礼拜堂。讲解约2小时，之后自由参观花园。',
+      type: 'attraction',
+      icon: '👑',
+      duration: '2.5小时',
+      location: 'Château de Versailles'
+    },
+    {
+      time: '13:00',
+      endTime: '13:30',
+      title: '快速午餐',
+      description: '在凡尔赛宫附近快速用餐（三明治或简餐），为下午赶往吉维尼做准备。',
+      type: 'meal',
+      icon: '🥪',
+      duration: '30分钟',
+      location: '凡尔赛宫附近'
+    },
+    {
+      time: '13:30',
+      endTime: '15:00',
+      title: '🚂 凡尔赛→Vernon-Giverny',
+      description: '从Versailles搭火车返回巴黎，再从Saint-Lazare站转乘前往Vernon的火车（约45分钟），到达后搭接驳巴士至吉维尼（15分钟）。需提前查好衔接车次。',
+      type: 'transport',
+      icon: '🚂',
+      duration: '1.5小时',
+      location: 'Versailles→Paris→Vernon→Giverny'
+    },
+    {
+      time: '15:30',
+      endTime: '17:30',
+      title: '🌸 莫奈花园（已购票15:30场）',
+      description: '印象派大师的灵感花园！已购票15:30入场（4份）。下午光线柔和，日本桥、睡莲池、鸢尾花园美如画作。建议先参观花园再进故居。6月是花期最美的季节！',
+      type: 'attraction',
+      icon: '🌸',
+      duration: '2小时',
+      location: 'Fondation Claude Monet, Giverny'
+    },
+    {
+      time: '17:30',
+      endTime: '17:57',
+      title: '接驳巴士至Vernon火车站',
+      description: '搭乘接驳巴士返回Vernon-Giverny火车站，赶17:57的火车。',
+      type: 'transport',
+      icon: '🚌',
+      duration: '27分钟',
+      location: 'Giverny→Gare de Vernon-Giverny'
+    },
+    {
+      time: '17:57',
+      endTime: '18:49',
+      title: '🚂 Vernon → Paris Saint-Lazare',
+      description: 'TER NOMAD（Voyageurs 1187 | 13148），17:57发车，18:49到达巴黎Saint-Lazare站。已购票。',
+      type: 'transport',
+      icon: '🚂',
+      duration: '52分钟',
+      location: 'Gare de Vernon-Giverny → Gare Saint-Lazare'
+    },
+    {
+      time: '18:49',
+      endTime: '19:15',
+      title: '前往Marsan餐厅',
+      description: '从Saint-Lazare搭地铁前往巴黎6区Rue d\'Assas的Marsan餐厅。',
+      type: 'transport',
+      icon: '🚇',
+      duration: '26分钟'
+    },
+    {
       time: '19:15',
       endTime: '21:00',
       title: '🍷 Marsan - Hélène Darroze 晚餐',
-      description: '米其林星级餐厅，已通过TheFork预订4人（19:15）。主厨Hélène Darroze的创意法餐，融合西南法风味。已获得200 Yums积分。',
+      description: '米其林星级餐厅，已通过TheFork预订4人（19:15）。主厨Hélène Darroze的创意法餐，融合西南法风味。已获得200 Yums积分。一天的奔波后享受顶级美食犒劳自己！',
       type: 'meal',
       icon: '🍷',
       duration: '1.75小时',

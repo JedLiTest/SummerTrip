@@ -84,26 +84,11 @@ export const bookingItems: BookingItem[] = [
     cityId: 'paris'
   },
 
-  // === Day 4: 吉维尼+橘园（原Day 5，因凡尔赛周一闭馆互换） ===
-  {
-    id: 'monet-garden',
-    day: 4,
-    date: '6月15日',
-    attractionName: '莫奈花园（吉维尼）',
-    attractionNameEn: 'Giverny - Monet\'s Garden',
-    type: 'ticket',
-    urgency: 'recommended',
-    status: 'pending',
-    price: '€11/人',
-    bookingUrl: 'https://fondation-monet.com/en/informations-pratiques/',
-    bookingTip: '建议网上购票。火车+接驳巴士套票从Saint-Lazare出发。4-10月每天开放，无固定闭馆日',
-    advanceDays: 14,
-    cityId: 'paris'
-  },
+  // === Day 3: 橘园美术馆（从Day 4移到Day 3，与奥赛衔接） ===
   {
     id: 'orangerie',
-    day: 4,
-    date: '6月15日',
+    day: 3,
+    date: '6月14日',
     attractionName: '橘园美术馆（⚠️ 每周二闭馆）',
     attractionNameEn: 'Musée de l\'Orangerie',
     type: 'ticket',
@@ -111,13 +96,28 @@ export const bookingItems: BookingItem[] = [
     status: 'pending',
     price: '€12.5/人（18岁以下免费）',
     bookingUrl: 'https://www.musee-orangerie.fr/en/visit/tickets',
-    bookingTip: '可现场购票，人流不多。与奥赛联票€20更划算。⚠️ 每周二闭馆，6月15日为周一，正常开放',
+    bookingTip: '可现场购票，人流不多。与奥赛联票€20更划算。⚠️ 每周二闭馆，6月14日为周日，正常开放',
     advanceDays: 7,
     cityId: 'paris'
   },
+  {
+    id: 'notre-dame',
+    day: 3,
+    date: '6月14日',
+    attractionName: '巴黎圣母院（已预约15:45入场）',
+    attractionNameEn: 'Notre-Dame de Paris',
+    type: 'reservation',
+    urgency: 'critical',
+    status: 'booked',
+    price: '免费（需预约）',
+    bookingUrl: 'https://www.notredamedeparis.fr',
+    bookingTip: '✅ 已预约6月14日15:45入场（Shaojun Yun名义）。务必准时到达，迟到作废',
+    advanceDays: 30,
+    deadlineNote: '已预约15:45，需准时',
+    cityId: 'paris'
+  },
 
-
-  // === Day 5: 凡尔赛宫（原Day 4，凡尔赛周一闭馆改为周二前往） ===
+  // === Day 5: 凡尔赛宫 + 莫奈花园（6月16日周二，已购票） ===
   {
     id: 'versailles',
     day: 5,
@@ -126,12 +126,42 @@ export const bookingItems: BookingItem[] = [
     attractionNameEn: 'Palace of Versailles',
     type: 'reservation',
     urgency: 'critical',
-    status: 'pending',
-    price: '€21/人（18岁以下免费）',
+    status: 'booked',
+    price: '含中文人工讲解（成人2+儿童2）',
     bookingUrl: 'https://www.chateauversailles.fr/en/plan-your-visit/tickets-and-prices',
-    bookingTip: '必须预约入场时段！建议选9:00首批入场，直奔镜厅避开人流。⚠️ 每周一闭馆，6月16日为周二，正常开放',
+    bookingTip: '✅ 已购票10:20场含中文人工讲解服务。成人票2份+儿童票2份（需陪同人员）。⚠️ 每周一闭馆，6月16日为周二，正常开放',
     advanceDays: 30,
-    deadlineNote: '旺季名额极其紧张，越早越好',
+    deadlineNote: '已购票 10:20 含中文讲解',
+    cityId: 'paris'
+  },
+  {
+    id: 'monet-garden',
+    day: 5,
+    date: '6月16日',
+    attractionName: '莫奈花园（吉维尼）',
+    attractionNameEn: 'Giverny - Monet\'s Garden',
+    type: 'ticket',
+    urgency: 'critical',
+    status: 'booked',
+    price: '成人票 × 4份',
+    bookingUrl: 'https://fondation-monet.com/en/informations-pratiques/',
+    bookingTip: '✅ 已购票15:30场（4份）。凡尔赛结束后火车前往Vernon-Giverny。返程火车17:57→18:49到Saint-Lazare',
+    advanceDays: 14,
+    deadlineNote: '已购票 15:30 场',
+    cityId: 'paris'
+  },
+  {
+    id: 'vallee-village',
+    day: 5,
+    date: '6月16日',
+    attractionName: 'La Vallée Village 购物卡',
+    attractionNameEn: 'La Vallée Village Shopping Card',
+    type: 'pass',
+    urgency: 'optional',
+    status: 'booked',
+    price: '30欧购物卡+9折优惠券 × 4份',
+    bookingTip: '✅ 已购买MG巴黎吉维尼购物村30欧购物卡+9折购物优惠券（4份），有效期至2026-06-30。可在莫奈花园回程路上使用',
+    advanceDays: 0,
     cityId: 'paris'
   },
 
