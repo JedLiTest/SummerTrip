@@ -449,43 +449,64 @@ export const timelineData: Record<number, TimelineEvent[]> = {
   // ===== Day 5: 凡尔赛宫 + 莫奈花园 6月16日 =====
   5: [
     {
-      time: '07:00',
-      endTime: '07:30',
+      time: '07:30',
+      endTime: '08:15',
       title: '早餐',
-      description: '早起快速早餐，今天行程紧凑！',
+      description: '早起快速早餐，今天行程紧凑！建议在公寓简单准备或去附近面包店打包带走。',
       type: 'meal',
       icon: '🥐',
-      duration: '30分钟',
+      duration: '45分钟',
       location: '公寓附近, 巴黎8区'
     },
     {
-      time: '07:30',
-      endTime: '08:00',
-      title: '地铁前往 Gare Saint-Lazare',
-      description: '从公寓搭地铁前往Saint-Lazare火车站，寄存当天不需要的物品。',
+      time: '08:15',
+      endTime: '08:20',
+      title: '步行至 Franklin D. Roosevelt 地铁站',
+      description: '从公寓（52 Rue de Ponthieu）步行5分钟至最近的地铁站 Franklin D. Roosevelt（M1/M9线）。',
+      type: 'transport',
+      icon: '🚶',
+      duration: '5分钟',
+      location: '52 Rue de Ponthieu → Franklin D. Roosevelt (M9)'
+    },
+    {
+      time: '08:20',
+      endTime: '08:30',
+      title: '🚇 M9地铁：Franklin D. Roosevelt → Pont de l\'Alma',
+      description: '乘坐M9线（方向Pont de Sèvres），经过Alma-Marceau站，在Pont de l\'Alma站下车（仅2站，约5分钟）。跟随RER C换乘标识。',
       type: 'transport',
       icon: '🚇',
-      duration: '30分钟'
+      duration: '10分钟',
+      location: 'M9: Franklin D. Roosevelt → Pont de l\'Alma'
     },
     {
-      time: '08:00',
-      endTime: '09:00',
-      title: '🚂 Saint-Lazare → Versailles Chantiers',
-      description: '从Saint-Lazare搭乘Transilien N线至Versailles Chantiers站（约35分钟），步行15分钟到达凡尔赛宫。',
+      time: '08:30',
+      endTime: '09:05',
+      title: '🚂 RER C线：Pont de l\'Alma → Versailles Château Rive Gauche',
+      description: '换乘RER C线（⚠️ 确认方向为\"Versailles Château RG\"）。约29分钟车程，每30分钟一班。沿途经过Invalides、Issy等站。单程票价€4.15/人。',
       type: 'transport',
       icon: '🚂',
-      duration: '1小时',
-      location: 'Saint-Lazare→Versailles'
+      duration: '35分钟',
+      location: 'RER C: Pont de l\'Alma → Versailles Château Rive Gauche'
     },
     {
-      time: '09:00',
+      time: '09:05',
+      endTime: '09:15',
+      title: '步行至凡尔赛宫',
+      description: '从Versailles Château Rive Gauche火车站出站后，沿Avenue de Paris直行约800米（10分钟）即到凡尔赛宫正门入口。沿途有路标指引。',
+      type: 'transport',
+      icon: '🚶',
+      duration: '10分钟',
+      location: 'Gare Versailles Château Rive Gauche → Château de Versailles'
+    },
+    {
+      time: '09:15',
       endTime: '10:20',
-      title: '凡尔赛宫排队等待',
-      description: '提前到达凡尔赛宫入口，购买花园票或在附近等待10:20入场时间。可先逛宫殿外围和广场。',
+      title: '凡尔赛宫等候入场',
+      description: '提前到达凡尔赛宫正门入口。可先在广场拍照、购买花园票，或在入口附近咖啡店休息，等待10:20中文讲解团集合。',
       type: 'free',
       icon: '🏰',
-      duration: '1.3小时',
-      location: 'Château de Versailles 入口'
+      duration: '1小时',
+      location: 'Château de Versailles 入口广场'
     },
     {
       time: '10:20',

@@ -342,12 +342,12 @@ export const tripData: DayPlan[] = [
     ],
     transport: [
       {
-        type: 'train',
-        from: '巴黎',
-        to: '凡尔赛',
-        duration: '40分钟',
-        cost: '€7.1',
-        bookingTip: 'RER C线直达凡尔赛'
+        type: 'metro',
+        from: '酒店（Franklin D. Roosevelt站）',
+        to: '凡尔赛宫',
+        duration: '约55分钟',
+        cost: '€4.15/人',
+        bookingTip: '步行5分钟→M9（2站到Pont de l\'Alma）→换乘RER C（29分钟到Versailles Château Rive Gauche）→步行10分钟到宫殿'
       },
       {
         type: 'train',
